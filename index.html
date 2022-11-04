@@ -14,23 +14,34 @@
 </head>
 <body>
     <header>
-        <button id="favoritesBtn">Favorites</button>
+        <button class="button" id="favoritesBtn">Favorites</button>
         <div id="mainMenu" class="mainMenu">
             <h1 id="questions"> Questions?</h1>
             
             <h2 id="numberOfCards">How many cards?</h2>
-            <div id="numberOfCardsDropdown">dropdown</div>
-            
+            <div id="numberOfCardsDropdown">
+                <div class="row">
+                    <div class="small-10 columns">
+                      <div class="slider" data-slider data-initial-start="1" data-end="10">
+                        <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" aria-controls="sliderOutput1"></span>
+                        <span class="slider-fill" data-slider-fill></span>
+                      </div>
+                    </div>
+                    <div class="small-2 columns">
+                      <input type="number" id="sliderOutput1">
+                    </div>
+                </div>
+            </div>
+        </div>
             <h2 id="suiteChoice">Choose your suite?  </h2>
             <!-- Replace with images and change to words on hover -->
-            <button id="clubsIcon">clubs</button> <button id="diamondsIcon">diamonds</button> <button id="heartsIcon">hearts</button> <button id="spadesIcon">spades</button> <button>all</button>
+            <button class="button" id="clubsIcon">clubs</button> <button class="button" id="diamondsIcon">diamonds</button> <button class="button" id="heartsIcon">hearts</button> <button class="button" id="spadesIcon">spades</button> <button class="button" id="full-workout">Full Workout</button>
         </div>
     </header>
-    <!-- <script href="js/vendor/modernizr.js"></script> -->
+    <script href="js/vendor/modernizr.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>    
+    <script src="./assets/js/vendor/foundation.min.js"></script>    
     <script src="./assets/js/app.js"></script>
-    <script src="./assets/js/vendor/foundation.js"></script>
-    <script src="./assets/js/vendor/foundation.min.js"></script>
-    <script src="./assets/js/vendor/jquery.js"></script>
     <script src="./assets/js/vendor/what-input.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
