@@ -4,11 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style src="./assets/css/normalize.css"></style>
-    <style src="./assets/css/style.css"></style>
+    <link rel="stylesheet" href="./assets/css/normalize.css"></link>
+    <link rel="stylesheet" href="./assets/css/app.css"></link>
+    <link rel="stylesheet" href="./assets/css/foundation.css"></link>
+    <link rel="stylesheet" href="./assets/css/foundation.min.css"></link>
+    <link rel="stylesheet" href="./assets/css/style.css"></link>
+
     <title>Cards Against Apathy</title>
 </head>
 <body>
+    <header>
+        <button id="favoritesBtn">Favorites</button>
+        <div id="mainMenu" class="mainMenu">
+            <h1 id="questions"> Questions?</h1>
+            
+            <h2 id="numberOfCards">How many cards?</h2>
+            <div id="numberOfCardsDropdown">dropdown</div>
+            
+            <h2 id="suiteChoice">Choose your suite?  </h2>
+            <!-- Replace with images and change to words on hover -->
+            <button id="clubsIcon">clubs</button> <button id="diamondsIcon">diamonds</button> <button id="heartsIcon">hearts</button> <button id="spadesIcon">spades</button> <button>all</button>
+        </div>
+    </header>
+    <!-- <script href="js/vendor/modernizr.js"></script> -->
+    <script src="./assets/js/app.js"></script>
+    <script src="./assets/js/vendor/foundation.js"></script>
+    <script src="./assets/js/vendor/foundation.min.js"></script>
+    <script src="./assets/js/vendor/jquery.js"></script>
+    <script src="./assets/js/vendor/what-input.js"></script>
     <script src="/assets/js/script.js"></script>
 </body>
 </html>
