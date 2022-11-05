@@ -143,7 +143,7 @@ function drawCardsAPI(cardNum,suite){
 
 //display drawn cards
 function displayCards(card){
-    console.log(card,exerName);
+    console.log(card);
     //grab important values
     
     var cardValue=card.value;
