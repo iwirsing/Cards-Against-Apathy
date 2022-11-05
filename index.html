@@ -27,17 +27,28 @@
                         <span class="slider-fill" data-slider-fill></span>
                       </div>
                     </div>
-                    <div class="small-2 columns">
-                      <input type="number" id="sliderOutput1">
+                    <input class="small-2 columns" type="number" id="sliderOutput1"></input>
                     </div>
                 </div>
+
+                <h2 id="suiteChoice">Choose your suite?  </h2>
+                <!-- Replace with images and change to words on hover -->
+                <input type="radio" name="suiteBtn" id="clubsIcon" value="Clubs"></input><label for="clubsIcon">Clubs</label>
+                <input type="radio" name="suiteBtn" id="diamondsIcon" value="Diamonds"></input> <label for="diamondsIcon">Diamonds</label>
+                <input type="radio" name="suiteBtn" id="heartsIcon" value="Hearts"></input> <label for="heartsIcon">Hearts</label>
+                <input type="radio" name="suiteBtn" id="spadesIcon" value="Spades"></input> <label for="spadesIcon">Spades</label>
+                <input type="radio"  name="suiteBtn" id="full-workout" value="Full Workout"></input><label for="full-workout">Full Workout</label>
+                <div id="submitContainer">
+                <button class="button" id="submitBtn">SUBMIT</button>
+            </div>
             </div>
         </div>
-            <h2 id="suiteChoice">Choose your suite?  </h2>
-            <!-- Replace with images and change to words on hover -->
-            <button class="button" id="clubsIcon">clubs</button> <button class="button" id="diamondsIcon">diamonds</button> <button class="button" id="heartsIcon">hearts</button> <button class="button" id="spadesIcon">spades</button> <button class="button" id="full-workout">Full Workout</button>
         </div>
     </header>
+      <!-- display cards here -->
+    <div class="row small-up-2 medium-up-3" id="rowCards">
+
+    </div> <!-- id: rowCards -->
     <script href="js/vendor/modernizr.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>    
     <script src="./assets/js/vendor/foundation.min.js"></script>    

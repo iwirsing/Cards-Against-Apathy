@@ -1,5 +1,223 @@
+
+//universal variables
+var deckIdAll='8nlbluqizznt';
+var clubsDeckID='4m4xrszvu5ex';
+var diamondsDeckID='w03icwg2n6ga';
+var heartsDeckID='4admp62snbza';
+var spadesDeckID='kjg7a4bfgs5o';
+var exerName;
+var exerInstructions;
+// var exerciseArray=[];
+
+var deckURL='https://www.deckofcardsapi.com/api/deck/'
+
+function drawCardsAPI(cardNum,suite){
+    // url for shuffling and putting all cards back: https://www.deckofcardsapi.com/api/deck/8nlbluqizznt/shuffle/?remaining=false
+    //url for shuffling the remaining cards: https://www.deckofcardsapi.com/api/deck/8nlbluqizznt/shuffle/?remaining=true
+    // url for getting cads: https://www.deckofcardsapi.com/api/deck/<<deck_id>>/draw/?count=2
+    //shuffle cards
+    //https://www.deckofcardsapi.com/api/deck/4m4xrszvu5ex/shuffle/?remaining=false
+    
+    //clear display
+    $("#rowCards").empty();
+
+    //check suite type
+    if (suite==="Clubs"){
+        //create partial deck of clubs
+        var clubsUrl=deckURL+clubsDeckID+'/draw/?count='+cardNum;
+        //fill clubs deck
+        fetch('https://www.deckofcardsapi.com/api/deck/4m4xrszvu5ex/return/')
+        //shuffle clubs cards
+        .then (fetch('https://www.deckofcardsapi.com/api/deck/4m4xrszvu5ex/shuffle/?cards=AC,2C,3C,4C,5C,6C,7C,8C,9C,0C,JC,QC,KC')
+        .then( fetch(clubsUrl)
+            .then(response => response.json())
+            .then(clubsHand => {
+                console.log(clubsHand);
+                
+                for (var i=0;i<clubsHand.cards.length;i++){
+                    var clubCard=clubsHand.cards[i];
+                    
+                    console.log(clubCard);
+        
+                    displayCards(clubCard);
+                }
+
+            })
+            .catch(error => console.log('error', error))
+        ));
+    }
+
+    if (suite==="Diamonds"){
+        console.log("Diamonds clicked");
+        //create partial deck of clubs
+        var diamondsUrl=deckURL+diamondsDeckID+'/draw/?count='+cardNum;
+        //fill clubs deck
+        fetch('https://www.deckofcardsapi.com/api/deck/'+diamondsDeckID+'/return/')
+        //shuffle clubs cards
+        .then (fetch('https://www.deckofcardsapi.com/api/deck/'+diamondsDeckID+'/shuffle/?cards=AD,2D,3D,4D,5D,6D,7D,8D,9D,0D,JD,QD,KD')
+        .then( fetch(diamondsUrl)
+            .then(response => response.json())
+            .then(diamondsHand => {
+                console.log(diamondsHand);
+                for (var i=0;i<diamondsHand.cards.length;i++){
+                    var diamondsCard=diamondsHand.cards[i];
+                    console.log(diamondsCard);
+                    displayCards(diamondsCard);
+                }
+
+            })
+            .catch(error => console.log('error', error))
+        ));
+    }
+
+    if (suite==="Hearts"){
+        console.log("Hearts clicked");
+        //create partial deck of clubs
+        var heartsUrl=deckURL+heartsDeckID+'/draw/?count='+cardNum;
+        //fill clubs deck
+        fetch('https://www.deckofcardsapi.com/api/deck/'+heartsDeckID+'/return/')
+        //shuffle clubs cards
+        .then (fetch('https://www.deckofcardsapi.com/api/deck/'+heartsDeckID+'/shuffle/?cards=AH,2H,3H,4H,5H,6H,7H,8H,9H,0H,JH,QH,KH')
+        .then( fetch(heartsUrl)
+            .then(response => response.json())
+            .then(heartsHand => {
+                console.log(heartsHand);
+                for (var i=0;i<heartsHand.cards.length;i++){
+                    var heartCard=heartsHand.cards[i];
+                    console.log(heartCard);
+                    displayCards(heartCard);
+                }
+
+            })
+            .catch(error => console.log('error', error))
+        ));
+    }
+
+    if (suite==="Spades"){
+        console.log("Spades clicked");
+        //create partial deck of clubs
+        var spadesUrl=deckURL+spadesDeckID+'/draw/?count='+cardNum;
+        //fill clubs deck
+        fetch('https://www.deckofcardsapi.com/api/deck/'+spadesDeckID+'/return/')
+        //shuffle clubs cards
+        .then (fetch('https://www.deckofcardsapi.com/api/deck/'+spadesDeckID+'/shuffle/?cards=AS,2S,3S,4S,5S,6S,7S,8S,9S,0S,JS,QS,KS')
+        .then( fetch(spadesUrl)
+            .then(response => response.json())
+            .then(spadesHand => {
+                console.log(spadesHand);
+                for (var i=0;i<spadesHand.cards.length;i++){
+                    var spadesCard=spadesHand.cards[i];
+                    console.log(spadesCard);
+                    displayCards(spadesCard);
+                }
+
+            })
+            .catch(error => console.log('error', error))
+        ));
+    }
+
+    if (suite==="Full Workout"){
+        console.log("Full Workout clicked");
+        //create partial deck of clubs
+        var deckAllUrl=deckURL+deckIdAll+'/draw/?count='+cardNum;
+        //fill clubs deck
+        fetch('https://www.deckofcardsapi.com/api/deck/'+deckIdAll+'/return/')
+        //shuffle clubs cards
+        .then (fetch('https://www.deckofcardsapi.com/api/deck/'+deckIdAll+'/shuffle/?remaining=false')
+        .then( fetch(deckAllUrl)
+            .then(response => response.json())
+            .then(allHand => {
+                console.log(allHand);
+                for (var i=0;i<allHand.cards.length;i++){
+                    var allCard=allHand.cards[i];
+                    console.log(allCard);
+                    displayCards(allCard);
+                }
+
+            })
+            .catch(error => console.log('error', error))
+        ));
+    }
+
+}
+
+//display drawn cards
+function displayCards(card){
+    console.log(card,exerName);
+    //grab important values
+    
+    var cardValue=card.value;
+    var cardImg=card.image;
+    var cardSuite=card.suit;
+
+    console.log(cardValue,cardImg,cardSuite);
+
+
+    var myHeaders = new Headers();
+    var type = 'cardio';
+    
+    myHeaders.append("x-api-key", "R78wAd5UBLglet+gIcUCSQ==qefnWKvG8uC3WfIv");
+    
+    var requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+    };
+    
+    fetch('https://api.api-ninjas.com/v1/exercises?type=' + type, requestOptions)
+        .then(response => response.json())
+        .then(result => {
+            console.log(result);
+            //choose a random number from 1 to 9
+            var exerciseIndex=Math.floor(Math.random()*result.length);
+        
+            //create column div 
+            var colDiv=document.createElement("div");
+            colDiv.setAttribute("class","column")
+            //create card div
+            var cardDiv=document.createElement("div");
+            cardDiv.setAttribute("class","card");
+            cardDiv.setAttribute("style","width:250px");
+            //create img element
+            var cardImgDisplay=document.createElement("img");
+            cardImgDisplay.setAttribute("src",cardImg);
+            //create card divider
+            var cardDivider=document.createElement("div");
+            cardDivider.setAttribute("class","card-divider");
+            cardDivider.textContent=result[exerciseIndex].name;
+            //create exercise description
+            var exerciseText=document.createElement("div");
+            exerciseText.textContent=result[exerciseIndex].instructions;
+
+            //append to DOM
+            cardDiv.appendChild(cardImgDisplay);
+            cardDiv.appendChild(cardDivider);
+            cardDiv.appendChild(exerciseText);
+            colDiv.appendChild(cardDiv);
+            $("#rowCards").append(colDiv);
+
+
+        }
+        )
+        .catch(error => console.log('error', error));
+
+
+
+
+
+
+    
+
+
+}
+
+
+
+
+function fetchNinjaAPI(){
 var myHeaders = new Headers();
-var cardio = 'cardio';
+var type = 'cardio';
+
 myHeaders.append("x-api-key", "R78wAd5UBLglet+gIcUCSQ==qefnWKvG8uC3WfIv");
 
 var requestOptions = {
@@ -8,7 +226,38 @@ var requestOptions = {
     redirect: 'follow'
 };
 
-fetch('https://api.api-ninjas.com/v1/exercises?type=' + cardio, requestOptions)
-    .then(response => response.text())
-    .then(result => console.log(result))
+fetch('https://api.api-ninjas.com/v1/exercises?type=' + type, requestOptions)
+    .then(response => response.json())
+    .then(result => {
+        console.log(result);
+       //choose a random number from 1 to 9
+       var exerciseIndex=Math.floor(Math.random()*result.length);
+    
+        exerName=result[exerciseIndex].name;
+        exerInstructions=result[exerciseIndex].instructions;
+    }
+    )
     .catch(error => console.log('error', error));
+  
+
+}
+
+
+//submit form
+function submitForm (event){
+    event.preventDefault(event);
+
+    //capture user input # of cards
+    var numCards=document.querySelector("#sliderOutput1").value;
+    console.log(numCards);
+
+    //capture the card suite
+   var selectedSuite=$('input[name="suiteBtn"]:checked').val();
+   console.log("suite selected is "+selectedSuite);
+
+    drawCardsAPI(numCards,selectedSuite);
+
+}
+
+
+$("#submitBtn").on("click", submitForm);
