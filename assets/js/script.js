@@ -1,4 +1,4 @@
-
+//============================== SECTION 1 ==============================
 //universal variables
 var deckIdAll='8nlbluqizznt';
 var clubsDeckID='4m4xrszvu5ex';
@@ -200,20 +200,9 @@ function displayCards(card){
         }
         )
         .catch(error => console.log('error', error));
-
-
-
-
-
-
-    
-
-
 }
 
-
-
-
+//API Fetch
 function fetchNinjaAPI(){
 var myHeaders = new Headers();
 var type = 'cardio';
@@ -238,10 +227,7 @@ fetch('https://api.api-ninjas.com/v1/exercises?type=' + type, requestOptions)
     }
     )
     .catch(error => console.log('error', error));
-  
-
 }
-
 
 //submit form
 function submitForm (event){
@@ -259,5 +245,5 @@ function submitForm (event){
 
 }
 
-
 $("#submitBtn").on("click", submitForm);
+
