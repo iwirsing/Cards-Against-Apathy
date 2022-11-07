@@ -11,7 +11,7 @@ var exerInstructions;
 
 var deckURL='https://www.deckofcardsapi.com/api/deck/'
 
-function drawCardsAPI(cardNum,suite){
+function drawCardsAPI(cardNum,suit){
     // url for shuffling and putting all cards back: https://www.deckofcardsapi.com/api/deck/8nlbluqizznt/shuffle/?remaining=false
     //url for shuffling the remaining cards: https://www.deckofcardsapi.com/api/deck/8nlbluqizznt/shuffle/?remaining=true
     // url for getting cads: https://www.deckofcardsapi.com/api/deck/<<deck_id>>/draw/?count=2
@@ -21,8 +21,8 @@ function drawCardsAPI(cardNum,suite){
     //clear display
     $("#rowCards").empty();
 
-    //check suite type
-    if (suite==="Clubs"){
+    //check suit type
+    if (suit==="Clubs"){
         //create partial deck of clubs
         var clubsUrl=deckURL+clubsDeckID+'/draw/?count='+cardNum;
         //fill clubs deck
@@ -41,13 +41,13 @@ function drawCardsAPI(cardNum,suite){
         
                     displayCards(clubCard);
                 }
-
+        
             })
             .catch(error => console.log('error', error))
         ));
     }
 
-    if (suite==="Diamonds"){
+    if (suit==="Diamonds"){
         console.log("Diamonds clicked");
         //create partial deck of clubs
         var diamondsUrl=deckURL+diamondsDeckID+'/draw/?count='+cardNum;
@@ -70,7 +70,7 @@ function drawCardsAPI(cardNum,suite){
         ));
     }
 
-    if (suite==="Hearts"){
+    if (suit==="Hearts"){
         console.log("Hearts clicked");
         //create partial deck of clubs
         var heartsUrl=deckURL+heartsDeckID+'/draw/?count='+cardNum;
@@ -93,7 +93,7 @@ function drawCardsAPI(cardNum,suite){
         ));
     }
 
-    if (suite==="Spades"){
+    if (suit==="Spades"){
         console.log("Spades clicked");
         //create partial deck of clubs
         var spadesUrl=deckURL+spadesDeckID+'/draw/?count='+cardNum;
@@ -116,7 +116,7 @@ function drawCardsAPI(cardNum,suite){
         ));
     }
 
-    if (suite==="Full Workout"){
+    if (suit==="Full Workout"){
         console.log("Full Workout clicked");
         //create partial deck of clubs
         var deckAllUrl=deckURL+deckIdAll+'/draw/?count='+cardNum;
@@ -148,9 +148,9 @@ function displayCards(card){
     
     var cardValue=card.value;
     var cardImg=card.image;
-    var cardSuite=card.suit;
+    var cardSuit=card.suit;
 
-    console.log(cardValue,cardImg,cardSuite);
+    console.log(cardValue,cardImg,cardSuit);
 
 
     var myHeaders = new Headers();
@@ -237,13 +237,12 @@ function submitForm (event){
     var numCards=document.querySelector("#sliderOutput1").value;
     console.log(numCards);
 
-    //capture the card suite
-   var selectedSuite=$('input[name="suiteBtn"]:checked').val();
-   console.log("suite selected is "+selectedSuite);
+    //capture the card suit
+   var selectedSuit=$('input[name="suitBtn"]:checked').val();
+   console.log("suit selected is "+selectedSuit);
 
-    drawCardsAPI(numCards,selectedSuite);
+    drawCardsAPI(numCards,selectedSuit);
 
 }
 
 $("#submitBtn").on("click", submitForm);
-

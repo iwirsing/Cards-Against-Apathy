@@ -22,7 +22,7 @@
   <header>
     <button class="button" id="favoritesBtn">Favorites</button>
     <div id="mainMenu" class="mainMenu">
-      <h1 id="questions"> Questions?</h1>
+      <h1 id="questions"> Let's Work Out!</h1>
 
       <h2 id="numberOfCards">How many cards?</h2>
       <div id="numberOfCardsDropdown">
@@ -38,17 +38,17 @@
         </div>
       </div>
 
-      <h2 id="suiteChoice">Choose your suite? </h2>
+      <h2 id="suitChoice">Choose your suit! </h2>
       <!-- Replace with images and change to words on hover -->
-      <input type="radio" name="suiteBtn" id="clubsIcon" value="Clubs"></input><label for="clubsIcon">Clubs</label>
-      <input type="radio" name="suiteBtn" id="diamondsIcon" value="Diamonds"></input> <label
+      <input type="radio" name="suitBtn" id="clubsIcon" value="Clubs"></input><label for="clubsIcon">Clubs</label>
+      <input type="radio" name="suitBtn" id="diamondsIcon" value="Diamonds"></input> <label
         for="diamondsIcon">Diamonds</label>
-      <input type="radio" name="suiteBtn" id="heartsIcon" value="Hearts"></input> <label for="heartsIcon">Hearts</label>
-      <input type="radio" name="suiteBtn" id="spadesIcon" value="Spades"></input> <label for="spadesIcon">Spades</label>
-      <input type="radio" name="suiteBtn" id="full-workout" value="Full Workout"></input><label for="full-workout">Full
+      <input type="radio" name="suitBtn" id="heartsIcon" value="Hearts"></input> <label for="heartsIcon">Hearts</label>
+      <input type="radio" name="suitBtn" id="spadesIcon" value="Spades"></input> <label for="spadesIcon">Spades</label>
+      <input type="radio" name="suitBtn" id="full-workout" value="Full Workout"></input><label for="full-workout">Full
         Workout</label>
       <div id="submitContainer">
-        <button class="button" id="submitBtn">SUBMIT</button>
+        <button class="button" id="submitBtn">Let's start sweatin'!</button>
       </div>
     </div>
     </div>
@@ -57,35 +57,44 @@
   <!-- display cards here -->
   <div class="row small-up-2 medium-up-3" id="rowCards">
   </div> <!-- id: rowCards -->
-<!-- End Game modal with "go back" button and "save workout" button - GY -->
+
+
+<!--------------------------------------- END GAME --------------------------------------------->
+<!--GY-->
   <div class="row">
   <div class="columns">
-    <a class="button" data-open="endgameModal">Workout Complete!</a>
+    <!-- "Workout Complete" Button that will replace the default "complete" button on the final card.
+          It will be hidden by default once the other sections and buttons are completed.-->
+    <a class="button" id="workoutCompleteBtn" data-open="endgameModal">Workout Complete!</a>
 
+    <!-- End Game modal with "go back" button and "save workout" button -->
     <div class="reveal" id="endgameModal" data-reveal>
       <h1>CONGRATULATIONS!</h1>
       <p class="lead">Kudos to you for another great workout! Keep up the great work! If you enjoyed the workout you just did, save it to your favorites! </p>
-      <a class="button" data-close id="goBack">Go Back</a>  
+      <a class="secondary button" data-close id="goBack">Go Back</a>  
       <a class="button" data-open="saveModal">Save to Favorites</a>
         <span aria-hidden="true"></span>
       </button>
     </div>
 
+    <!--Secondary Modal pops up for saving your workout-->
     <div class="reveal" id="saveModal" data-reveal>
       <h2>Pick a name for your workout!</h2>
-      <a class="button" data-close id="goBack">Go Back</a>  
+      <form>
+            <div class="medium-12 cell">
+                <input type="text" id="workoutName" placeholder="Type awesome name for your workout here!">
+        </div>
+        <input type="submit" class="button" id="saveButton" value="Save to Favorites">
+       </form> 
+      <a class="secondary button" data-close id="goBack">Go Back</a>  
         <span aria-hidden="true"></span>
       </button>
     </div>
   </div>
 </div>
 
-  <!-- "Save Workout" form to enter workout name
-    Hiden until "save" button is clicked- GY -->
 
-
-
-
+<!--------------------------------------- SAVED WORKOUT SCREEN (Pending) ------------------------------------------------------>
 
 
   <script href="js/vendor/modernizr.js"></script>
