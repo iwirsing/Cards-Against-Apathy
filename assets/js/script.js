@@ -145,20 +145,20 @@ function drawCardsAPI(cardNum, suit) {
 function displayCards(card, exerciseIndex) {
     console.log(card);
     //grab important values
-    
-    var cardValue=card.value;
-    var cardImg=card.image;
-    var cardSuit=card.suit;
+
+    var cardValue = card.value;
+    var cardImg = card.image;
+    var cardSuit = card.suit;
     var type;
     // var muscle;
     console.log(cardValue, cardImg, cardSuit);
 
     // selected suite(s) are matched with specific types of exercises
-    if (cardSuit =='HEARTS') {
+    if (cardSuit == 'HEARTS') {
         type = 'cardio';
     }
     // For this card, I would prefer it to be identified my muscle instead of type
-    if (cardSuit =='DIAMONDS') {
+    if (cardSuit == 'DIAMONDS') {
         // muscle = 'abdominals';
         type = 'stretching';
     }
@@ -187,7 +187,7 @@ function displayCards(card, exerciseIndex) {
             //create column div 
             var colDiv = document.createElement("div");
             colDiv.setAttribute("class", "column")
-            colDiv.setAttribute("style", "margin-right:10px")
+            colDiv.setAttribute("style", "margin:10px")
             //create card div
             var cardDiv = document.createElement("div");
             cardDiv.setAttribute("class", "card");
