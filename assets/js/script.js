@@ -168,16 +168,15 @@ function displayCards(card, exerciseIndex) {
     if (cardSuit =='HEARTS') {
         type = 'type=cardio';
     }
-    // For this card, I would prefer it to be identified my muscle instead of type
     if (cardSuit =='DIAMONDS') {
-        type= 'muscle=abdominals';
-        // type = 'type=stretching';
+        type= 'muscle=abdominals'; 
     }
     if (cardSuit == 'SPADES') {
         type = 'type=strength';
     }
     if (cardSuit == 'CLUBS') {
         type = 'type=plyometrics';
+        // type = 'type=stretching';
     }
 
     var myHeaders = new Headers();
