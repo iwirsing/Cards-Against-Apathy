@@ -145,10 +145,10 @@ function drawCardsAPI(cardNum, suit) {
 function displayCards(card, exerciseIndex) {
     console.log(card);
     //grab important values
-    
-    var cardValue=card.value;
-    var cardImg=card.image;
-    var cardSuit=card.suit;
+
+    var cardValue = card.value;
+    var cardImg = card.image;
+    var cardSuit = card.suit;
     var type;
 
     //card value indicates reps or minutes
@@ -165,11 +165,13 @@ function displayCards(card, exerciseIndex) {
     console.log(cardValue, cardImg, cardSuit);
 
     // selected suite(s) are matched with specific types of exercises
+
     if (cardSuit =='HEARTS') {
         type = 'type=cardio';
     }
     if (cardSuit =='DIAMONDS') {
         type= 'muscle=abdominals'; 
+
     }
     if (cardSuit == 'SPADES') {
         type = 'type=strength';
@@ -197,7 +199,7 @@ function displayCards(card, exerciseIndex) {
             //create column div 
             var colDiv = document.createElement("div");
             colDiv.setAttribute("class", "column")
-            colDiv.setAttribute("style", "margin-right:10px")
+            colDiv.setAttribute("style", "margin:10px")
             //create card div
             var cardDiv = document.createElement("div");
             cardDiv.setAttribute("class", "card");
