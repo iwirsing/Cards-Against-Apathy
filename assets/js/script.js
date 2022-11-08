@@ -181,16 +181,16 @@ function displayCards(card) {
             //create img element
             var cardImgDisplay=document.createElement("img");
             cardImgDisplay.setAttribute("src",cardImg);
-            cardImgDisplay.setAttribute('id','cardImgDrawn')
+            cardImgDisplay.setAttribute('class','cardImgDrawn')
             //create card divider
             var cardDivider=document.createElement("div");
             cardDivider.setAttribute("class","card-divider");
-            cardDivider.setAttribute("id","exerciseDrawn");
+            cardDivider.setAttribute("class","exerciseDrawn");
             cardDivider.textContent=result[exerciseIndex].name;
             //create exercise description
             var exerciseText=document.createElement("div");
             exerciseText.textContent=result[exerciseIndex].instructions;
-            exerciseText.setAttribute("id","exerciseTxtDrawn")
+            exerciseText.setAttribute("class","exerciseTxtDrawn")
             exerciseText.setAttribute("style", "padding:10%");
 
 
