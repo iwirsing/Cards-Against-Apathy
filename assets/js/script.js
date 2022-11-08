@@ -39,7 +39,7 @@ function drawCardsAPI(cardNum, suit) {
 
                             console.log(clubCard);
 
-                            displayCards(clubCard);
+                            displayCards(clubCard, i);
                         }
 
                     })
@@ -62,7 +62,7 @@ function drawCardsAPI(cardNum, suit) {
                         for (var i = 0; i < diamondsHand.cards.length; i++) {
                             var diamondsCard = diamondsHand.cards[i];
                             console.log(diamondsCard);
-                            displayCards(diamondsCard);
+                            displayCards(diamondsCard, i);
                         }
 
                     })
@@ -85,7 +85,7 @@ function drawCardsAPI(cardNum, suit) {
                         for (var i = 0; i < heartsHand.cards.length; i++) {
                             var heartCard = heartsHand.cards[i];
                             console.log(heartCard);
-                            displayCards(heartCard);
+                            displayCards(heartCard, i);
                         }
 
                     })
@@ -108,7 +108,7 @@ function drawCardsAPI(cardNum, suit) {
                         for (var i = 0; i < spadesHand.cards.length; i++) {
                             var spadesCard = spadesHand.cards[i];
                             console.log(spadesCard);
-                            displayCards(spadesCard);
+                            displayCards(spadesCard, i);
                         }
 
                     })
@@ -131,7 +131,7 @@ function drawCardsAPI(cardNum, suit) {
                         for (var i = 0; i < allHand.cards.length; i++) {
                             var allCard = allHand.cards[i];
                             console.log(allCard);
-                            displayCards(allCard);
+                            displayCards(allCard, i);
                         }
 
                     })
@@ -142,7 +142,7 @@ function drawCardsAPI(cardNum, suit) {
 }
 
 //display drawn cards
-function displayCards(card) {
+function displayCards(card, exerciseIndex) {
     console.log(card);
     //grab important values
 
@@ -168,8 +168,6 @@ function displayCards(card) {
         .then(response => response.json())
         .then(result => {
             console.log(result);
-            //choose a random number from 1 to 9
-            var exerciseIndex = Math.floor(Math.random() * result.length);
 
             //create column div 
             var colDiv = document.createElement("div");
@@ -199,33 +197,6 @@ function displayCards(card) {
             $("#rowCards").append(colDiv);
 
 
-        }
-        )
-        .catch(error => console.log('error', error));
-}
-
-//API Fetch
-function fetchNinjaAPI() {
-    var myHeaders = new Headers();
-    var type = 'cardio';
-
-    myHeaders.append("x-api-key", "R78wAd5UBLglet+gIcUCSQ==qefnWKvG8uC3WfIv");
-
-    var requestOptions = {
-        method: 'GET',
-        headers: myHeaders,
-        redirect: 'follow'
-    };
-
-    fetch('https://api.api-ninjas.com/v1/exercises?type=' + type, requestOptions)
-        .then(response => response.json())
-        .then(result => {
-            console.log(result);
-            //choose a random number from 1 to 9
-            var exerciseIndex = Math.floor(Math.random() * result.length);
-
-            exerName = result[exerciseIndex].name;
-            exerInstructions = result[exerciseIndex].instructions;
         }
         )
         .catch(error => console.log('error', error));
