@@ -149,12 +149,28 @@ function displayCards(card){
     var cardValue=card.value;
     var cardImg=card.image;
     var cardSuit=card.suit;
+    var type;
+    // var muscle;
 
     console.log(cardValue,cardImg,cardSuit);
 
+    // selected suite(s) are matched with specific types of exercises
+    if (cardSuit =='HEARTS') {
+        type = 'cardio';
+    }
+    // For this card, I would prefer it to be identified my muscle instead of type
+    if (cardSuit =='DIAMONDS') {
+        // muscle = 'abdominals';
+        type = 'stretching';
+    }
+    if (cardSuit == 'SPADES') {
+        type = 'strength';
+    }
+    if (cardSuit == 'CLUBS') {
+        type = 'plyometrics';
+    }
 
     var myHeaders = new Headers();
-    var type = 'cardio';
     
     myHeaders.append("x-api-key", "R78wAd5UBLglet+gIcUCSQ==qefnWKvG8uC3WfIv");
     
@@ -202,32 +218,32 @@ function displayCards(card){
         .catch(error => console.log('error', error));
 }
 
-//API Fetch
-function fetchNinjaAPI(){
-var myHeaders = new Headers();
-var type = 'cardio';
+// //API Fetch
+// function fetchNinjaAPI(){
+// var myHeaders = new Headers();
+// var type = 'cardio';
 
-myHeaders.append("x-api-key", "R78wAd5UBLglet+gIcUCSQ==qefnWKvG8uC3WfIv");
+// myHeaders.append("x-api-key", "R78wAd5UBLglet+gIcUCSQ==qefnWKvG8uC3WfIv");
 
-var requestOptions = {
-    method: 'GET',
-    headers: myHeaders,
-    redirect: 'follow'
-};
+// var requestOptions = {
+//     method: 'GET',
+//     headers: myHeaders,
+//     redirect: 'follow'
+// };
 
-fetch('https://api.api-ninjas.com/v1/exercises?type=' + type, requestOptions)
-    .then(response => response.json())
-    .then(result => {
-        console.log(result);
-       //choose a random number from 1 to 9
-       var exerciseIndex=Math.floor(Math.random()*result.length);
+// fetch('https://api.api-ninjas.com/v1/exercises?type=' + type, requestOptions)
+//     .then(response => response.json())
+//     .then(result => {
+//         console.log(result);
+//        //choose a random number from 1 to 9
+//        var exerciseIndex=Math.floor(Math.random()*result.length);
     
-        exerName=result[exerciseIndex].name;
-        exerInstructions=result[exerciseIndex].instructions;
-    }
-    )
-    .catch(error => console.log('error', error));
-}
+//         exerName=result[exerciseIndex].name;
+//         exerInstructions=result[exerciseIndex].instructions;
+//     }
+//     )
+//     .catch(error => console.log('error', error));
+// }
 
 //submit form
 function submitForm (event){
