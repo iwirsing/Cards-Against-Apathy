@@ -150,6 +150,17 @@ function displayCards(card, exerciseIndex) {
     var cardImg=card.image;
     var cardSuit=card.suit;
     var type;
+
+    //card value indicates reps or minutes
+    if ((cardValue==="JACK")||(cardValue==="QUEEN")||(cardValue==="KING"))
+    {
+        cardValue='20';
+    }
+    if (cardValue==="ACE"){
+        cardValue='1';
+    }
+
+
     // var muscle;
     console.log(cardValue, cardImg, cardSuit);
 
@@ -201,15 +212,16 @@ function displayCards(card, exerciseIndex) {
             cardDivider.setAttribute("class", "card-divider");
             cardDivider.setAttribute("id", "exerciseDrawn");
             cardDivider.setAttribute("style", "justify-content:center")
-            cardDivider.textContent = result[exerciseIndex].name;
+            cardDivider.textContent = cardValue+" Minutes of "+ result[exerciseIndex].name;
             //create exercise description
             var exerciseText = document.createElement("div");
             exerciseText.textContent = result[exerciseIndex].instructions;
             exerciseText.setAttribute("id", "exerciseTxtDrawn")
-            exerciseText.setAttribute("style", "padding:10%")
+            exerciseText.setAttribute("style", "padding:10%; display:none")
 
 
             //append to DOM
+            
             cardDiv.appendChild(cardImgDisplay);
             cardDiv.appendChild(cardDivider);
             cardDiv.appendChild(exerciseText);
@@ -240,3 +252,13 @@ function submitForm(event) {
 }
 
 $("#submitBtn").on("click", submitForm);
+
+//show exercise instructions
+$(document).on("click",".card-divider", function(event){
+    event.preventDefault();
+    console.log(event);
+    console.log(event.currentTarget.innerText);
+    console.log(event.target.parentNode.querySelector("#exerciseTxtDrawn"));
+    var display=event.target.parentNode.querySelector("#exerciseTxtDrawn");
+    display.style.display = display.style.display == "none" ? "block" : "none";
+})
