@@ -187,23 +187,26 @@ function displayCards(card, exerciseIndex) {
             //create column div 
             var colDiv = document.createElement("div");
             colDiv.setAttribute("class", "column")
+            colDiv.setAttribute("style", "margin-right:10px")
             //create card div
             var cardDiv = document.createElement("div");
             cardDiv.setAttribute("class", "card");
             cardDiv.setAttribute("style", "width:250px");
             //create img element
-            var cardImgDisplay=document.createElement("img");
-            cardImgDisplay.setAttribute("src",cardImg);
-            cardImgDisplay.setAttribute('id','cardImgDrawn')
+            var cardImgDisplay = document.createElement("img");
+            cardImgDisplay.setAttribute("src", cardImg);
+            cardImgDisplay.setAttribute('id', 'cardImgDrawn')
             //create card divider
-            var cardDivider=document.createElement("div");
-            cardDivider.setAttribute("class","card-divider");
-            cardDivider.setAttribute("id","exerciseDrawn");
-            cardDivider.textContent=result[exerciseIndex].name;
+            var cardDivider = document.createElement("div");
+            cardDivider.setAttribute("class", "card-divider");
+            cardDivider.setAttribute("id", "exerciseDrawn");
+            cardDivider.setAttribute("style", "justify-content:center")
+            cardDivider.textContent = result[exerciseIndex].name;
             //create exercise description
-            var exerciseText=document.createElement("div");
-            exerciseText.textContent=result[exerciseIndex].instructions;
-            exerciseText.setAttribute("id","exerciseTxtDrawn")
+            var exerciseText = document.createElement("div");
+            exerciseText.textContent = result[exerciseIndex].instructions;
+            exerciseText.setAttribute("id", "exerciseTxtDrawn")
+            exerciseText.setAttribute("style", "padding:10%")
 
 
             //append to DOM
