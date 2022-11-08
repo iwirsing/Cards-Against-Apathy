@@ -155,18 +155,18 @@ function displayCards(card, exerciseIndex) {
 
     // selected suite(s) are matched with specific types of exercises
     if (cardSuit =='HEARTS') {
-        type = 'cardio';
+        type = 'type=cardio';
     }
     // For this card, I would prefer it to be identified my muscle instead of type
     if (cardSuit =='DIAMONDS') {
-        // muscle = 'abdominals';
-        type = 'stretching';
+        type= 'muscle=abdominals';
+        // type = 'type=stretching';
     }
     if (cardSuit == 'SPADES') {
-        type = 'strength';
+        type = 'type=strength';
     }
     if (cardSuit == 'CLUBS') {
-        type = 'plyometrics';
+        type = 'type=plyometrics';
     }
 
     var myHeaders = new Headers();
@@ -179,7 +179,7 @@ function displayCards(card, exerciseIndex) {
         redirect: 'follow'
     };
 
-    fetch('https://api.api-ninjas.com/v1/exercises?type=' + type, requestOptions)
+    fetch('https://api.api-ninjas.com/v1/exercises?' + type, requestOptions)
         .then(response => response.json())
         .then(result => {
             console.log(result);
