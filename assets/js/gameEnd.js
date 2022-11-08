@@ -26,17 +26,16 @@ goBackBtn.addEventListener('click', function(){
 let saveBtn = document.getElementById('saveButton')
 
 saveBtn.addEventListener('click', function () {
+//!!!!!!! Currently, function only saves one [cardFace, exercise, exerciseText]. Need to troubleshoot so it saves all from workout
   let name = document.getElementById('workoutName').value;
-
-/*IVY PLEASE HELP!!! I'm so sad that I can't figure this out :(
-I'm looking through your code for selected cards and I tried multiple things but I can't seem to select the right element
-that displays the cards that were drawn. I was trying to grab the array you console logged out on line 84, but I'm not sure it works.
-If you are able to find what the right element I should be targeting to save in local storage, please let me know! 
-*/
-  let cardsDrawn = document.getElementById('rowCards')
-
-  //Setting the key, value pair in storage works. Only storing name, cardsDrawn is either empty string or undefined
-  localStorage.setItem(name,cardsDrawn)
+  let cardsDrawn = []
+  let cards = {
+    cardFace: document.getElementById('cardImgDrawn').src,
+    exercise: document.getElementById('exerciseDrawn').textContent,
+    exerciseText: document.getElementById('exerciseTxtDrawn').textContent,
+  }
+  cardsDrawn.push(cards)
+  localStorage.setItem(name,JSON.stringify(cardsDrawn))
   console.log(cardsDrawn)
 
   //Then you will be taken to the Saved Workouts screen (pending)
@@ -45,3 +44,9 @@ If you are able to find what the right element I should be targeting to save in 
 
 //This Function takes you to the favorites page
 function goToFavorites() {}
+
+
+//Retrieve favorites
+
+
+//Append favorites 
