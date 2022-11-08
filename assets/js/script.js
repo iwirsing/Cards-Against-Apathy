@@ -191,6 +191,7 @@ function displayCards(card){
             var exerciseText=document.createElement("div");
             exerciseText.textContent=result[exerciseIndex].instructions;
             exerciseText.setAttribute("id","exerciseTxtDrawn")
+            exerciseText.setAttribute("style", "padding:10%");
 
             //append to DOM
             cardDiv.appendChild(cardImgDisplay);
