@@ -19,7 +19,7 @@ Once you click the "Workout Complete!" button, the modal will pop up
 //When you click "Go Back" button, it will reload to the homepage
 let goBackBtn = document.getElementById('goBack')
 goBackBtn.addEventListener('click', function () {
- //window.location.reload();
+  //window.location.reload();
 })
 
 
@@ -34,62 +34,48 @@ let saveBtn = document.getElementById('saveButton')
 //Then the cards will display on the page based on the data retrieved  
 
 saveBtn.addEventListener('click', function () {
-  //!!!!!!! Currently, function only saves one [cardFace, exercise, exerciseText]. Need to troubleshoot so it saves all from workout
+  // save key/value pair [workout names | array of workout names]
+  let name = document.getElementById('workoutName').value;
+  let savedNames;
+  if (localStorage.getItem('savedNames')) {
+    savedNames = [].concat(localStorage.getItem('savedNames'))
+  } else {
+    savedNames = []
+  }
+  savedNames.push(name);
+  localStorage.setItem('Saved Workouts', savedNames);
 
-  // // save key/value pair [workout names | array of workout names]
- 
-  // let savedNames;
-
-  // if(localStorage.getItem('savedNames')) {
-  //   savedNames = [].concat(localStorage.getItem('savedNames'))
-  // }
 
   // save key/value pair [workout name | array of cards drawn] to storage
-  let name = document.getElementById('workoutName').value;
-  let cardsDrawn = []
-  let numCardsDrawn = document.getElementsByClassName('cardImgDrawn').length
-  console.log(document.getElementsByClassName('cardImgDrawn'))
- 
-  
-for (let i = 0; i < numCardsDrawn; i++) {
-  cardsDrawn.push(document.getElementsByClassName('card')[i]) 
-  
-  //let card = document.getElementsByClassName('card')
-  
-  //   let card = {
-  //     cardFace: document.getElementsByClassName('cardImgDrawn')[i].src,
-  //     exercise: document.getElementsByClassName('exerciseDrawn')[i].textContent,
-  //     exerciseText: document.getElementsByClassName('exerciseTxtDrawn')[i].textContent,
-  //   }
-  
+  let numCardsDrawn = document.getElementsByClassName('card').length;
+  console.log(document.getElementsByClassName('card'));
+  let cardsDrawn = [];
+  for (let i = 0; i < numCardsDrawn; i++) {
+    cardsDrawn.push(document.getElementsByClassName('card')[i].innerHTML)
   }
-console.log(cardsDrawn)
-  //cardsDrawn.push(card)
 
-  // console.log(cards)
-  console.log(cardsDrawn.length)
   console.log(cardsDrawn)
+  console.log(cardsDrawn.length)
   console.log(name)
+  console.log(JSON.stringify(cardsDrawn))
   localStorage.setItem(name, JSON.stringify(cardsDrawn))
 
-  //Append workout name to UI in favorites.html
-
-
-  //Then you will be taken to the Saved Workouts screen (pending)
   goToFavorites()
 })
 
+
 //This Function takes you to the favorites page (favorites.html)
-function goToFavorites() {
-  //[code for going to favorites.html];
-  showFavorites()
-}
+// function goToFavorites() {
+//   document.location.assign('./favorites.html');
+//   showFavorites()
+// }
 
 //Retrieve Name and exercises
 
 const favoritesStage = document.getElementById('favoritesStage');
 
 function showFavorites() {
+  //Append workout name to UI in favorites.html
 
 }
 

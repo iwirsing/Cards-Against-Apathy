@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <link>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="./assets/css/normalize.css">
 </link>
 <link rel="stylesheet" href="./assets/css/app.css">
-</link>
-<link rel="stylesheet" href="./assets/css/foundation.css">
 </link>
 <link rel="stylesheet" href="./assets/css/foundation.min.css">
 </link>
@@ -20,7 +18,7 @@
 
 <body>
   <header>
-    <button class="button" id="favoritesBtn">Favorites</button>
+    <a class="button" id="favoritesBtn" href="./favorites.html">Favorites</a>
     <div id="mainMenu" class="mainMenu">
       <h1 id="questions"> Let's Work Out!</h1>
 
@@ -59,44 +57,52 @@
   </div> <!-- id: rowCards -->
 
 
-<!--------------------------------------- END GAME --------------------------------------------->
-<!--GY-->
+  <!--------------------------------------- END GAME --------------------------------------------->
+  <!--GY-->
   <div class="row">
-  <div class="columns">
-    <!-- "Workout Complete" Button that will replace the default "complete" button on the final card.
+    <div class="columns">
+      <!-- "Workout Complete" Button that will replace the default "complete" button on the final card.
           It will be hidden by default once the other sections and buttons are completed.-->
-    <a class="button" id="workoutCompleteBtn" data-open="endgameModal">Workout Complete!</a>
+      <a class="button" id="workoutCompleteBtn" data-open="endgameModal">Workout Complete!</a>
 
-    <!-- End Game modal with "go back" button and "save workout" button -->
-    <div class="reveal" id="endgameModal" data-reveal>
-      <h1>CONGRATULATIONS!</h1>
-      <p class="lead">Kudos to you for another great workout! Keep up the great work! If you enjoyed the workout you just did, save it to your favorites! </p>
-      <a class="secondary button" data-close id="goBack">Go Back</a>  
-      <a class="button" data-open="saveModal">Save to Favorites</a>
+      <!-- End Game modal with "go back" button and "save workout" button -->
+      <div class="reveal" id="endgameModal" data-reveal>
+        <h1>CONGRATULATIONS!</h1>
+        <p class="lead">Kudos to you for another great workout! Keep up the great work! If you enjoyed the workout you
+          just did, save it to your favorites! </p>
+        <a class="secondary button" data-close id="goBack">Go Back</a>
+        <a class="button" data-open="saveModal">Save to Favorites</a>
         <span aria-hidden="true"></span>
-      </button>
-    </div>
+        </button>
+      </div>
 
-    <!--Secondary Modal pops up for saving your workout-->
-    <div class="reveal" id="saveModal" data-reveal>
-      <h2>Pick a name for your workout!</h2>
-      <form>
-            <div class="medium-12 cell">
-                <input type="text" id="workoutName" placeholder="Type awesome name for your workout here!">
-        </div>
-        <input class="button" id="saveButton" value="Save to Favorites">
-       </form> 
-      <a class="secondary button" data-close id="goBack">Go Back</a>  
+      <!--Secondary Modal pops up for saving your workout-->
+      <div class="reveal" id="saveModal" data-reveal>
+        <h2>Pick a name for your workout!</h2>
+        <form>
+          <div class="medium-12 cell">
+            <input type="text" id="workoutName" placeholder="Type awesome name for your workout here!">
+          </div>
+          <input class="button" id="saveButton" value="Save to Favorites" data-open="success">
+        </form>
+        <a class="secondary button" data-close id="goBack">Go Back</a>
         <span aria-hidden="true"></span>
-      </button>
+        </button>
+      </div>
     </div>
   </div>
-</div>
 
+  <!--Successfully saved alert-->
+  <div data-closable class="alert-box callout success" id="success" data-reveal>
+    <i class="fa fa-check"></i> Workout Saved!
+    <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+      <span aria-hidden="true">&CircleTimes;</span>
+    </button>
+  </div>
 
-<!--------------------------------------- SAVED WORKOUT SCREEN (Pending) ------------------------------------------------------>
+  <!--------------------------------------- SAVED WORKOUT SCREEN (Pending) ------------------------------------------------------>
 
-<section id = favoritesStage></section>
+  <section id=favoritesStage></section>
 
 
 
@@ -104,15 +110,14 @@
   <script href="js/vendor/modernizr.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="./assets/js/vendor/foundation.min.js"></script>
-  <script src="./assets/js/vendor/foundation.js"></script>
   <script src="./assets/js/app.js"></script>
   <script src="./assets/js/vendor/what-input.js"></script>
   <script src="./assets/js/script.js"></script>
   <script src="./assets/js/gameEnd.js"></script>
 
 
-  
 
 </body>
 
 </html>
+
