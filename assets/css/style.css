@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+html {
+    background-image: url(https://www.free-freecell-solitaire.com/solitaire/images/backgrounds/1920x1200/green_felt.jpg);
+}
+
 .title {
     text-align: center;
     font-size: 65pt;
@@ -83,6 +87,13 @@ h1 {
     top: -25px;
 }
 
+.icon:active {
+    background-color: goldenrod;
+    color: black;
+    border: 2pt solid black;
+    transition: 0.01s;
+}
+
 .hearts-icon,
 .diamonds-icon {
     color: rgb(255, 255, 255);
@@ -120,4 +131,8 @@ h1 {
     background: none;
     border: none;
     color: goldenrod;
+}
+
+.footer {
+    background-image: url(https://www.free-freecell-solitaire.com/solitaire/images/backgrounds/1920x1200/green_felt.jpg);
 }
