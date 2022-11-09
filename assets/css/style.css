@@ -12,6 +12,11 @@
 .mainMenu {
     border: 1px solid black;
     text-align: center;
+    background-image: url(/assets/images/woodpolish.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: goldenrod;
 }
 
 .small-2 {
@@ -28,6 +33,7 @@
 
 .workout-cards {
     display: flex;
+    justify-content: center;
 }
 
 .radio-button {
@@ -82,4 +88,20 @@
 
 .workout {
     display: none;
+}
+
+.slider-handle {
+    background-image: url(/assets/images/pokerchip1.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+}
+
+.slider {
+    background-color: black;
+}
+
+.slider-fill {
+    background-color: goldenrod;
 }
