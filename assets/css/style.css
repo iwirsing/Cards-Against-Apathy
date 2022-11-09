@@ -4,8 +4,20 @@
     box-sizing: border-box;
 }
 
+.title {
+    text-align: center;
+    font-size: 65pt;
+}
+
 .mainMenu {
     border: 1px solid black;
+    text-align: center;
+}
+
+.small-2 {
+    text-align: center;
+    font-size: 36pt;
+    padding: 24pt;
 }
 
 /* body{
@@ -16,4 +28,58 @@
 
 .workout-cards {
     display: flex;
+}
+
+.radio-button {
+    display: none;
+}
+
+.icon {
+    font-size: 80pt;
+    border: 2pt solid black;
+    border-radius: 50%;
+    text-align: center;
+    transition: 0.3s;
+    width: 200px;
+    background-color: black;
+    background-image: url(/assets/images/pokerchip1.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.icon:hover {
+    background-image: none;
+    background-color: black;
+    color: goldenrod;
+    border: 2pt solid goldenrod;
+    transition: 0.3s;
+}
+
+.icon:hover .suits {
+    display: none;
+}
+
+.icon:hover .workout {
+    display: inline;
+    font-size: 24pt;
+    position: relative;
+    top: -25px;
+}
+
+.hearts-icon,
+.diamonds-icon {
+    color: rgb(255, 255, 255);
+}
+
+.full-workout-icon {
+    background-color: white;
+    background-image: none;
+    width: 300px;
+    color: goldenrod;
+    padding: 10pt;
+}
+
+.workout {
+    display: none;
 }

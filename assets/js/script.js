@@ -152,12 +152,11 @@ function displayCards(card, exerciseIndex) {
     var type;
 
     //card value indicates reps or minutes
-    if ((cardValue==="JACK")||(cardValue==="QUEEN")||(cardValue==="KING"))
-    {
-        cardValue='20';
+    if ((cardValue === "JACK") || (cardValue === "QUEEN") || (cardValue === "KING")) {
+        cardValue = '20';
     }
-    if (cardValue==="ACE"){
-        cardValue='1';
+    if (cardValue === "ACE") {
+        cardValue = '1';
     }
 
 
@@ -166,11 +165,11 @@ function displayCards(card, exerciseIndex) {
 
     // selected suite(s) are matched with specific types of exercises
 
-    if (cardSuit =='HEARTS') {
+    if (cardSuit == 'HEARTS') {
         type = 'type=cardio';
     }
-    if (cardSuit =='DIAMONDS') {
-        type= 'muscle=abdominals'; 
+    if (cardSuit == 'DIAMONDS') {
+        type = 'muscle=abdominals';
 
     }
     if (cardSuit == 'SPADES') {
@@ -211,6 +210,7 @@ function displayCards(card, exerciseIndex) {
             var cardDivider = document.createElement("div");
             cardDivider.setAttribute("class", "card-divider");
             cardDivider.setAttribute("id", "exerciseDrawn");
+
             if (cardSuit == 'HEARTS') {
                 cardDivider.setAttribute("style", "justify-content:center")
             cardDivider.textContent = cardValue+" Minute(s) of "+ result[exerciseIndex].name;
@@ -218,6 +218,7 @@ function displayCards(card, exerciseIndex) {
                 cardDivider.setAttribute("style", "justify-content:center")
             cardDivider.textContent = cardValue+" rep(s) of "+ result[exerciseIndex].name;
             }
+            
             //create exercise description
             var exerciseText = document.createElement("div");
             exerciseText.textContent = result[exerciseIndex].instructions;
@@ -226,7 +227,7 @@ function displayCards(card, exerciseIndex) {
 
 
             //append to DOM
-            
+
             cardDiv.appendChild(cardImgDisplay);
             cardDiv.appendChild(cardDivider);
             cardDiv.appendChild(exerciseText);
@@ -259,11 +260,11 @@ function submitForm(event) {
 $("#submitBtn").on("click", submitForm);
 
 //show exercise instructions
-$(document).on("click",".card-divider", function(event){
+$(document).on("click", ".card-divider", function (event) {
     event.preventDefault();
     console.log(event);
     console.log(event.currentTarget.innerText);
     console.log(event.target.parentNode.querySelector("#exerciseTxtDrawn"));
-    var display=event.target.parentNode.querySelector("#exerciseTxtDrawn");
+    var display = event.target.parentNode.querySelector("#exerciseTxtDrawn");
     display.style.display = display.style.display == "none" ? "block" : "none";
 })
