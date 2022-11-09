@@ -49,7 +49,7 @@ function drawCardsAPI(cardNum, suit) {
 
     if (suit === "Diamonds") {
         console.log("Diamonds clicked");
-        //create partial deck of clubs
+        //create partial deck of diamonds
         var diamondsUrl = deckURL + diamondsDeckID + '/draw/?count=' + cardNum;
         //fill clubs deck
         fetch('https://www.deckofcardsapi.com/api/deck/' + diamondsDeckID + '/return/')
@@ -72,7 +72,7 @@ function drawCardsAPI(cardNum, suit) {
 
     if (suit === "Hearts") {
         console.log("Hearts clicked");
-        //create partial deck of clubs
+        //create partial deck of hearts
         var heartsUrl = deckURL + heartsDeckID + '/draw/?count=' + cardNum;
         //fill clubs deck
         fetch('https://www.deckofcardsapi.com/api/deck/' + heartsDeckID + '/return/')
@@ -95,7 +95,7 @@ function drawCardsAPI(cardNum, suit) {
 
     if (suit === "Spades") {
         console.log("Spades clicked");
-        //create partial deck of clubs
+        //create partial deck of spades
         var spadesUrl = deckURL + spadesDeckID + '/draw/?count=' + cardNum;
         //fill clubs deck
         fetch('https://www.deckofcardsapi.com/api/deck/' + spadesDeckID + '/return/')
@@ -152,11 +152,13 @@ function displayCards(card, exerciseIndex) {
     var type;
 
     //card value indicates reps or minutes
+
     if ((cardValue === "JACK") || (cardValue === "QUEEN") || (cardValue === "KING")) {
         cardValue = '20';
     }
     if (cardValue === "ACE") {
         cardValue = '1';
+
     }
 
 
@@ -165,11 +167,13 @@ function displayCards(card, exerciseIndex) {
 
     // selected suite(s) are matched with specific types of exercises
 
+
     if (cardSuit == 'HEARTS') {
         type = 'type=cardio';
     }
     if (cardSuit == 'DIAMONDS') {
         type = 'muscle=abdominals';
+
 
     }
     if (cardSuit == 'SPADES') {
@@ -181,7 +185,6 @@ function displayCards(card, exerciseIndex) {
     }
 
     var myHeaders = new Headers();
-
     myHeaders.append("x-api-key", "R78wAd5UBLglet+gIcUCSQ==qefnWKvG8uC3WfIv");
 
     var requestOptions = {
@@ -204,6 +207,7 @@ function displayCards(card, exerciseIndex) {
             cardDiv.setAttribute("class", "card");
             cardDiv.setAttribute("style", "width:250px");
             //create img element
+
             var cardImgDisplay = document.createElement("img");
             cardImgDisplay.setAttribute("src", cardImg);
             cardImgDisplay.setAttribute('id', 'cardImgDrawn')
@@ -211,8 +215,16 @@ function displayCards(card, exerciseIndex) {
             var cardDivider = document.createElement("div");
             cardDivider.setAttribute("class", "card-divider");
             cardDivider.setAttribute("id", "exerciseDrawn");
-            cardDivider.setAttribute("style", "justify-content:center")
-            cardDivider.textContent = cardValue + " Minutes of " + result[exerciseIndex].name;
+
+            if (cardSuit == 'HEARTS') {
+                cardDivider.setAttribute("style", "justify-content:center")
+            cardDivider.textContent = cardValue+" Minute(s) of "+ result[exerciseIndex].name;
+            } else {
+                cardDivider.setAttribute("style", "justify-content:center")
+            cardDivider.textContent = cardValue+" rep(s) of "+ result[exerciseIndex].name;
+            }
+            
+
             //create exercise description
             var exerciseText = document.createElement("div");
             exerciseText.textContent = result[exerciseIndex].instructions;
@@ -227,7 +239,6 @@ function displayCards(card, exerciseIndex) {
             cardDiv.appendChild(exerciseText);
             colDiv.appendChild(cardDiv);
             $("#rowCards").append(colDiv);
-
 
         }
         )
@@ -254,7 +265,9 @@ function submitForm(event) {
 $("#submitBtn").on("click", submitForm);
 
 //show exercise instructions
+
 $(document).on("click", ".card-divider", function (event) {
+
     event.preventDefault();
     console.log(event);
     console.log(event.currentTarget.innerText);
