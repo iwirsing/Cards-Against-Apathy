@@ -4,25 +4,24 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="./assets/css/normalize.css">
-</link>
-<link rel="stylesheet" href="./assets/css/app.css">
-</link>
-<link rel="stylesheet" href="./assets/css/foundation.min.css">
-</link>
-<link rel="stylesheet" href="./assets/css/style.css">
-</link>
-
+<link rel="stylesheet" href="./assets/css/normalize.css"></link>
+<link rel="stylesheet" href="./assets/css/app.css"></link>
+<link rel="stylesheet" href="./assets/css/foundation.min.css"></link>
+<link rel="stylesheet" href="./assets/css/style.css"></link>
 <title>Cards Against Apathy</title>
 </head>
 
 <body>
   <header>
-    <a class="button" id="favoritesBtn" href="./favorites.html">Favorites</a>
-    <div id="mainMenu" class="mainMenu">
-      <h1 id="questions"> Let's Work Out!</h1>
+    <div>
+      <a class="button" id="favoritesBtn" href="./favorites.html">Favorites</a>
+      <h1 class="title" id="title">Cards Against Apathy</h1>
+    </div>
 
-      <h2 id="numberOfCards">How many cards?</h2>
+    
+    
+    <div id="mainMenu" class="mainMenu">
+      <h3 id="numberOfCards">How many cards?</h3>
       <div id="numberOfCardsDropdown">
         <div class="row">
           <div class="small-10 columns">
@@ -38,11 +37,11 @@
 
       <h2 id="suitChoice">Choose your suit! </h2>
       <!-- Replace with images and change to words on hover -->
-      <input type="radio" name="suitBtn" id="clubsIcon" value="Clubs"></input><label for="clubsIcon">Clubs</label>
-      <input type="radio" name="suitBtn" id="diamondsIcon" value="Diamonds"></input> <label for="diamondsIcon">Diamonds</label>
-      <input type="radio" name="suitBtn" id="heartsIcon" value="Hearts"></input> <label for="heartsIcon">Hearts</label>
-      <input type="radio" name="suitBtn" id="spadesIcon" value="Spades"></input> <label for="spadesIcon">Spades</label>
-      <input type="radio" name="suitBtn" id="full-workout" value="Full Workout"></input><label for="full-workout">Full Workout</label>
+      <input type="radio" class="radio-button" name="suitBtn" id="clubsIcon" value="Clubs"></input><label class="icon clubs-icon" for="clubsIcon"><span class="suits">&clubs;</span><span class="workout">Plyometrics</span></label>
+      <input type="radio" class="radio-button" name="suitBtn" id="diamondsIcon" value="Diamonds" ></input><label class="icon diamonds-icon" for="diamondsIcon"><span class="suits">&diams;</span><span class="workout">Abdominals</span></label>
+      <input type="radio" class="radio-button" name="suitBtn" id="heartsIcon" value="Hearts"></input> <label class="icon hearts-icon" for="heartsIcon"><span class="suits">&hearts;</span><span class="workout">Cardio</span></label>
+      <input type="radio" class="radio-button" name="suitBtn" id="spadesIcon" value="Spades"></input> <label class="icon spades-icon" for="spadesIcon"><span class="suits">&spades;</span><span class="workout">Strength</span></label>
+      <input type="radio" class="radio-button" name="suitBtn" id="full-workout" value="Full Workout"></input><label class="icon full-workout-icon" for="full-workout"><span class="suits">&clubs;&diams;&hearts;&spades;</span><span class="workout">All Exercises</span></label>
       <div id="submitContainer">
         <button class="button" id="submitBtn">Let's start sweatin'!</button>
       </div>
