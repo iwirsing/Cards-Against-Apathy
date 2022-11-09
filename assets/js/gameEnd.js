@@ -37,14 +37,13 @@ saveBtn.addEventListener('click', function () {
   // save key/value pair [workout names | array of workout names]
   let name = document.getElementById('workoutName').value;
   let savedNames;
-  if (localStorage.getItem('savedNames')) {
-    savedNames = [].concat(localStorage.getItem('savedNames'))
+  if (localStorage.getItem('savedWorkouts')) {
+    savedNames = [].concat(localStorage.getItem('savedWorkouts'))
   } else {
     savedNames = []
   }
   savedNames.push(name);
-  localStorage.setItem('Saved Workouts', savedNames);
-
+  localStorage.setItem('savedWorkouts', savedNames);
 
   // save key/value pair [workout name | array of cards drawn] to storage
   let numCardsDrawn = document.getElementsByClassName('card').length;
@@ -54,37 +53,35 @@ saveBtn.addEventListener('click', function () {
     cardsDrawn.push(document.getElementsByClassName('card')[i].innerHTML)
   }
 
-  console.log(cardsDrawn)
-  console.log(cardsDrawn.length)
-  console.log(name)
-  console.log(JSON.stringify(cardsDrawn))
-  localStorage.setItem(name, JSON.stringify(cardsDrawn))
+  console.log(cardsDrawn);
+  console.log(cardsDrawn.length);
+  console.log(name);
+  console.log(JSON.stringify(cardsDrawn));
+  localStorage.setItem(name, JSON.stringify(cardsDrawn));
 
   goToFavorites()
 })
 
 
 //This Function takes you to the favorites page (favorites.html)
-// function goToFavorites() {
-//   document.location.assign('./favorites.html');
-//   showFavorites()
-// }
+function goToFavorites() {
+  document.location.assign('./favorites.html');
+  showFavorites()
+}
 
 //Retrieve Name and exercises
 
 const favoritesStage = document.getElementById('favoritesStage');
 
 function showFavorites() {
-  //Append workout name to UI in favorites.html
+  //Append workout name as a button to UI in favorites.html
+  let savedWorkouts = localStorage.getItem('savedWorkouts').split(',');
 
+  savedWorkouts.forEach(savedWorkout => {
+    let button = document.createElement('div');
+    div.textContent = savedWorkout;
+    button.setAttribute('class','button')
+    document.getElementById('favoriteList').append(button);
+  })
 }
-
-
-
-//Append 
-
-
-
-//Create button with name of workout
-
-//
+document.location('./favorites.html')
