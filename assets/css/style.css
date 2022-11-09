@@ -17,7 +17,7 @@
 .mainMenu {
     border: 1px solid black;
     text-align: center;
-    background-image: url(./assets/images/woodpolish.jpg);
+    background-image: url(https://t4.ftcdn.net/jpg/03/00/06/59/360_F_300065992_rFZjeJkXNh6ws8sYGGyGvhpxt7lwpgSX.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -54,7 +54,7 @@
     transition: 0.3s;
     width: 200px;
     background-color: black;
-    background-image: url(./assets/images/pokerchip1.png);
+    background-image: url(https://www.pngitem.com/pimgs/m/518-5181524_red-poker-chip-png-transparent-png.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -97,7 +97,7 @@
 }
 
 .slider-handle {
-    background-image: url(./assets/images/pokerchip1.png);
+    background-image: url(https://www.pngitem.com/pimgs/m/518-5181524_red-poker-chip-png-transparent-png.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
