@@ -17,7 +17,7 @@
 .mainMenu {
     border: 1px solid black;
     text-align: center;
-    background-image: url(/assets/images/woodpolish.jpg);
+    background-image: url(./assets/images/woodpolish.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -54,7 +54,7 @@
     transition: 0.3s;
     width: 200px;
     background-color: black;
-    background-image: url(/assets/images/pokerchip1.png);
+    background-image: url(./assets/images/pokerchip1.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -97,7 +97,7 @@
 }
 
 .slider-handle {
-    background-image: url(/assets/images/pokerchip1.png);
+    background-image: url(./assets/images/pokerchip1.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
