@@ -9,9 +9,19 @@
     font-size: 65pt;
 }
 
+.heading {
+    background-color: black;
+    color: goldenrod;
+}
+
 .mainMenu {
     border: 1px solid black;
     text-align: center;
+    background-image: url(/assets/images/woodpolish.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: goldenrod;
 }
 
 .small-2 {
@@ -20,14 +30,16 @@
     padding: 24pt;
 }
 
-/* body{
-    background-image: url(https://media.istockphoto.com/id/1062424918/photo/green-poker-table-felt-background-with-shade-vignette.jpg?s=170667a&w=0&k=20&c=XVnFAyN5okekiwWLAmtpCp_TXtv85f0-bDT6jrZ1gBk=);
-
-
-} */
+.small-up-2 {
+    background-image: url(https://www.free-freecell-solitaire.com/solitaire/images/backgrounds/1920x1200/green_felt.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 
 .workout-cards {
     display: flex;
+    justify-content: center;
 }
 
 .radio-button {
@@ -82,4 +94,26 @@
 
 .workout {
     display: none;
+}
+
+.slider-handle {
+    background-image: url(/assets/images/pokerchip1.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+}
+
+.slider {
+    background-color: black;
+}
+
+.slider-fill {
+    background-color: goldenrod;
+}
+
+.small-2 {
+    background: none;
+    border: none;
+    color: goldenrod;
 }
