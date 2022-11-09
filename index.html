@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <link>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="./assets/css/normalize.css">
 </link>
 <link rel="stylesheet" href="./assets/css/app.css">
-</link>
-<link rel="stylesheet" href="./assets/css/foundation.css">
 </link>
 <link rel="stylesheet" href="./assets/css/foundation.min.css">
 </link>
@@ -20,7 +18,7 @@
 
 <body>
   <header>
-    <button class="button" id="favoritesBtn">Favorites</button>
+    <a class="button" id="favoritesBtn" href="./favorites.html">Favorites</a>
     <div id="mainMenu" class="mainMenu">
       <h1 id="questions"> Let's Work Out!</h1>
 
@@ -41,12 +39,10 @@
       <h2 id="suitChoice">Choose your suit! </h2>
       <!-- Replace with images and change to words on hover -->
       <input type="radio" name="suitBtn" id="clubsIcon" value="Clubs"></input><label for="clubsIcon">Clubs</label>
-      <input type="radio" name="suitBtn" id="diamondsIcon" value="Diamonds"></input> <label
-        for="diamondsIcon">Diamonds</label>
+      <input type="radio" name="suitBtn" id="diamondsIcon" value="Diamonds"></input> <label for="diamondsIcon">Diamonds</label>
       <input type="radio" name="suitBtn" id="heartsIcon" value="Hearts"></input> <label for="heartsIcon">Hearts</label>
       <input type="radio" name="suitBtn" id="spadesIcon" value="Spades"></input> <label for="spadesIcon">Spades</label>
-      <input type="radio" name="suitBtn" id="full-workout" value="Full Workout"></input><label for="full-workout">Full
-        Workout</label>
+      <input type="radio" name="suitBtn" id="full-workout" value="Full Workout"></input><label for="full-workout">Full Workout</label>
       <div id="submitContainer">
         <button class="button" id="submitBtn">Let's start sweatin'!</button>
       </div>
@@ -100,7 +96,6 @@
   <script href="js/vendor/modernizr.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="./assets/js/vendor/foundation.min.js"></script>
-  <script src="./assets/js/vendor/foundation.js"></script>
   <script src="./assets/js/app.js"></script>
   <script src="./assets/js/vendor/what-input.js"></script>
   <script src="./assets/js/script.js"></script>

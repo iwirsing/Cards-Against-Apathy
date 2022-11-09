@@ -39,7 +39,7 @@ function drawCardsAPI(cardNum, suit) {
 
                             console.log(clubCard);
 
-                            displayCards(clubCard);
+                            displayCards(clubCard, i);
                         }
 
                     })
@@ -62,7 +62,7 @@ function drawCardsAPI(cardNum, suit) {
                         for (var i = 0; i < diamondsHand.cards.length; i++) {
                             var diamondsCard = diamondsHand.cards[i];
                             console.log(diamondsCard);
-                            displayCards(diamondsCard);
+                            displayCards(diamondsCard, i);
                         }
 
                     })
@@ -85,7 +85,7 @@ function drawCardsAPI(cardNum, suit) {
                         for (var i = 0; i < heartsHand.cards.length; i++) {
                             var heartCard = heartsHand.cards[i];
                             console.log(heartCard);
-                            displayCards(heartCard);
+                            displayCards(heartCard, i);
                         }
 
                     })
@@ -108,7 +108,7 @@ function drawCardsAPI(cardNum, suit) {
                         for (var i = 0; i < spadesHand.cards.length; i++) {
                             var spadesCard = spadesHand.cards[i];
                             console.log(spadesCard);
-                            displayCards(spadesCard);
+                            displayCards(spadesCard, i);
                         }
 
                     })
@@ -131,7 +131,7 @@ function drawCardsAPI(cardNum, suit) {
                         for (var i = 0; i < allHand.cards.length; i++) {
                             var allCard = allHand.cards[i];
                             console.log(allCard);
-                            displayCards(allCard);
+                            displayCards(allCard, i);
                         }
 
                     })
@@ -142,35 +142,46 @@ function drawCardsAPI(cardNum, suit) {
 }
 
 //display drawn cards
-function displayCards(card) {
+function displayCards(card, exerciseIndex) {
     console.log(card);
     //grab important values
-    
-    var cardValue=card.value;
-    var cardImg=card.image;
-    var cardSuit=card.suit;
 
+    var cardValue = card.value;
+    var cardImg = card.image;
+    var cardSuit = card.suit;
+    var type;
+
+    //card value indicates reps or minutes
+    if ((cardValue==="JACK")||(cardValue==="QUEEN")||(cardValue==="KING"))
+    {
+        cardValue='20';
+    }
+    if (cardValue==="ACE"){
+        cardValue='1';
+    }
+
+
+    // var muscle;
     console.log(cardValue, cardImg, cardSuit);
 
-    // selected suit(s) are matched with specific types of exercises
+    // selected suite(s) are matched with specific types of exercises
+
     if (cardSuit =='HEARTS') {
-        type = 'cardio';
+        type = 'type=cardio';
     }
-    // For this card, I would prefer it to be identified my muscle instead of type
     if (cardSuit =='DIAMONDS') {
-        // muscle = 'abdominals';
-        type = 'stretching';
+        type= 'muscle=abdominals'; 
+
     }
     if (cardSuit == 'SPADES') {
-        type = 'strength';
+        type = 'type=strength';
     }
     if (cardSuit == 'CLUBS') {
-        type = 'plyometrics';
+        type = 'type=plyometrics';
+        // type = 'type=stretching';
     }
 
     var myHeaders = new Headers();
-    var type = 'cardio';
-    
     myHeaders.append("x-api-key", "R78wAd5UBLglet+gIcUCSQ==qefnWKvG8uC3WfIv");
 
     var requestOptions = {
@@ -179,36 +190,43 @@ function displayCards(card) {
         redirect: 'follow'
     };
 
-    fetch('https://api.api-ninjas.com/v1/exercises?type=' + type, requestOptions)
+    fetch('https://api.api-ninjas.com/v1/exercises?' + type, requestOptions)
         .then(response => response.json())
         .then(result => {
             console.log(result);
-            //choose a random number from 1 to 9
-            var exerciseIndex = Math.floor(Math.random() * result.length);
 
             //create column div 
             var colDiv = document.createElement("div");
             colDiv.setAttribute("class", "column")
+            colDiv.setAttribute("style", "margin:10px")
             //create card div
             var cardDiv = document.createElement("div");
             cardDiv.setAttribute("class", "card");
             cardDiv.setAttribute("style", "width:250px");
             //create img element
-            var cardImgDisplay=document.createElement("img");
-            cardImgDisplay.setAttribute("src",cardImg);
-            cardImgDisplay.setAttribute('id','cardImgDrawn')
+            var cardImgDisplay = document.createElement("img");
+            cardImgDisplay.setAttribute("src", cardImg);
+            cardImgDisplay.setAttribute('id', 'cardImgDrawn')
             //create card divider
-            var cardDivider=document.createElement("div");
-            cardDivider.setAttribute("class","card-divider");
-            cardDivider.setAttribute("id","exerciseDrawn");
-            cardDivider.textContent=result[exerciseIndex].name;
+            var cardDivider = document.createElement("div");
+            cardDivider.setAttribute("class", "card-divider");
+            cardDivider.setAttribute("id", "exerciseDrawn");
+            if (cardSuit == 'HEARTS') {
+                cardDivider.setAttribute("style", "justify-content:center")
+            cardDivider.textContent = cardValue+" Minute(s) of "+ result[exerciseIndex].name;
+            } else {
+                cardDivider.setAttribute("style", "justify-content:center")
+            cardDivider.textContent = cardValue+" rep(s) of "+ result[exerciseIndex].name;
+            }
             //create exercise description
-            var exerciseText=document.createElement("div");
-            exerciseText.textContent=result[exerciseIndex].instructions;
-            exerciseText.setAttribute("id","exerciseTxtDrawn")
+            var exerciseText = document.createElement("div");
+            exerciseText.textContent = result[exerciseIndex].instructions;
+            exerciseText.setAttribute("id", "exerciseTxtDrawn")
+            exerciseText.setAttribute("style", "padding:10%; display:none")
 
 
             //append to DOM
+            
             cardDiv.appendChild(cardImgDisplay);
             cardDiv.appendChild(cardDivider);
             cardDiv.appendChild(exerciseText);
@@ -221,32 +239,6 @@ function displayCards(card) {
         .catch(error => console.log('error', error));
 }
 
-//API Fetch
-function fetchNinjaAPI(){
-var myHeaders = new Headers();
-var type = 'cardio';
-
-myHeaders.append("x-api-key", "R78wAd5UBLglet+gIcUCSQ==qefnWKvG8uC3WfIv");
-
-var requestOptions = {
-    method: 'GET',
-    headers: myHeaders,
-    redirect: 'follow'
-};
-
-fetch('https://api.api-ninjas.com/v1/exercises?type=' + type, requestOptions)
-    .then(response => response.json())
-    .then(result => {
-        console.log(result);
-       //choose a random number from 1 to 9
-       var exerciseIndex=Math.floor(Math.random()*result.length);
-    
-        exerName=result[exerciseIndex].name;
-        exerInstructions=result[exerciseIndex].instructions;
-    }
-    )
-    .catch(error => console.log('error', error));
-}
 
 //submit form
 function submitForm(event) {
@@ -265,3 +257,13 @@ function submitForm(event) {
 }
 
 $("#submitBtn").on("click", submitForm);
+
+//show exercise instructions
+$(document).on("click",".card-divider", function(event){
+    event.preventDefault();
+    console.log(event);
+    console.log(event.currentTarget.innerText);
+    console.log(event.target.parentNode.querySelector("#exerciseTxtDrawn"));
+    var display=event.target.parentNode.querySelector("#exerciseTxtDrawn");
+    display.style.display = display.style.display == "none" ? "block" : "none";
+})
