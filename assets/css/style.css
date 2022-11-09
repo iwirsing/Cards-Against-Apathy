@@ -9,6 +9,10 @@
     font-size: 65pt;
 }
 
+h1 {
+    margin-bottom: 0;
+}
+
 .heading {
     background-color: black;
     color: goldenrod;
