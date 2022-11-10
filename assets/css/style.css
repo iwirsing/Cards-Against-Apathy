@@ -7,11 +7,17 @@
 .title {
     text-align: center;
     font-size: 65pt;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .heading {
     background-color: black;
     color: goldenrod;
+}
+
+h2,
+h3 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .mainMenu {
@@ -22,6 +28,7 @@
     background-position: center;
     background-repeat: no-repeat;
     color: goldenrod;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .small-2 {
@@ -39,6 +46,7 @@
 
 .workout-cards {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
@@ -117,3 +125,77 @@
     border: none;
     color: goldenrod;
 }
+
+/* Rules for flipping cards */
+/* 
+.flip-card {
+  -webkit-perspective: 1000;
+          perspective: 1000;
+  border: 0;
+  background: transparent;
+}
+
+.flip-card:hover {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.flip-card {
+  height: 100%;
+  width: 100%;
+  background: rgba(254, 254, 254, 0.8);
+  padding: 0.25rem 0;
+}
+
+.flip-card {
+  transition: 0.6s;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  position: relative;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.flip-card {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.flip-card {
+  z-index: 2;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.flip-card-inner-back {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 1rem;
+}
+
+.flip-card-inner-back-text {
+  line-height: 1.3;
+}
+*/
