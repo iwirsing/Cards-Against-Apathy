@@ -152,6 +152,15 @@ h3 {
     color: goldenrod;
 }
 
+#submitBtn {
+    box-shadow:
+    0px 1.7px 2.2px rgba(0, 0, 0, 0.02),
+    0px 4px 5.3px rgba(0, 0, 0, 0.028),
+    0px 7.5px 10px rgba(0, 0, 0, 0.035),
+    0px 13.4px 17.9px rgba(0, 0, 0, 0.042),
+    0px 25.1px 33.4px rgba(0, 0, 0, 0.05),
+    0px 60px 80px rgba(0, 0, 0, 0.07);
+}
 
 .footer {
     background-color: #576d80;
@@ -160,3 +169,37 @@ h3 {
     background-repeat: no-repeat;
 }
 
+#workoutCompleteBtn {
+    box-shadow:
+    0px 1.7px 2.2px rgba(0, 0, 0, 0.02),
+    0px 4px 5.3px rgba(0, 0, 0, 0.028),
+    0px 7.5px 10px rgba(0, 0, 0, 0.035),
+    0px 13.4px 17.9px rgba(0, 0, 0, 0.042),
+    0px 25.1px 33.4px rgba(0, 0, 0, 0.05),
+    0px 60px 80px rgba(0, 0, 0, 0.07);
+}
+
+.button:active {
+    transform: scale(1.02);
+  }
+
+  /*Confetti*/
+  .wrapper {
+    position: relative;
+  }
+  
+  [class|="confetti"] {
+    position: absolute;
+  }
+  
+  .red {
+    background-color: #d13447;
+  }
+  
+  .yellow {
+    background-color: #ffbf00;
+  }
+  
+  .blue {
+    background-color: #263672;
+  }

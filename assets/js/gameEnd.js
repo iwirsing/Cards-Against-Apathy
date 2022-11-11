@@ -1,20 +1,6 @@
 //============================== SECTION 4 & 5 ==============================
+//Workout Complete button will open the modal and also show a short confetti animation
 
-/*Once final card is clicked, the complete button will pop up, but this time it will be "workout Complete"
-
-Which means that once the final card is clicked, the normal complete button will be replaced with the "workout Complete" button
- 
-Below is one way of doing this:
-  completeCard() {
-      [code for going to the next card after clicking 'complete' on the previous card]
-
-      if ([condition: there are no more cards coming up next]) {
-      [code for replacing normal "complete" button with workout complete button]
-  };
-  }
-
-Once you click the "Workout Complete!" button, the modal will pop up
-*/
 
 //When you click "Go Back" button, it will reload to the homepage
 let goBackBtn = document.getElementById('goBack')
@@ -110,10 +96,6 @@ window.onload = function() {
 };
 
 
-
-
-
-
 //Retrieve Name and exercises
 
 const favoritesStage = document.getElementById('favoritesStage');
@@ -138,13 +120,6 @@ function showFavorites() {
     document.querySelector('#favoriteList').append(button);
 
   }
-  // savedWorkouts.forEach(savedWorkout => {
-  //   let button = document.createElement('div');
-  //   button.textContent = savedWorkout;
-  //   button.setAttribute('class','button');
-  //   console.log(button);
-  //   document.querySelector('#favoriteList').append(button);
-  // })
 }
 
 
