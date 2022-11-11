@@ -168,7 +168,9 @@ h1 {
 
 
 .footer {
-    background-color: url(https://www.free-freecell-solitaire.com/solitaire/images/backgrounds/1920x1200/green_felt.jpg);
+
+    background-color: #576d80;
+
 }
 
 .favoritesBackground {
@@ -191,12 +193,14 @@ h1 {
 
 .grayOut {
     -webkit-filter: grayscale(100%);
+
     -moz-filter: grayscale(100%);
     -o-filter: grayscale(100%);
     -ms-filter: grayscale(100%);
     filter: grayscale(100%);
     opacity: 60%;
 }
+
 
 #submitBtn {
     box-shadow:
@@ -233,9 +237,12 @@ h1 {
 /*Confetti*/
 .wrapper {
     position: relative;
-}
 
-[class|="confetti"] {
+    max-width: 100%;
+  }
+  
+  [class|="confetti"] {
+
     position: absolute;
 }
 
