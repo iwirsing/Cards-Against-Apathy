@@ -5,30 +5,32 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="./assets/css/normalize.css"></link>
-<link rel="stylesheet" href="./assets/css/app.css"></link>
-<link rel="stylesheet" href="./assets/css/foundation.min.css"></link>
-<link rel="stylesheet" href="./assets/css/style.css"></link>
+<link rel="stylesheet" href="./assets/css/normalize.css">
+</link>
+<link rel="stylesheet" href="./assets/css/app.css">
+</link>
+<link rel="stylesheet" href="./assets/css/foundation.min.css">
+</link>
+<link rel="stylesheet" href="./assets/css/style.css">
+</link>
 
 <title>Cards Against Apathy</title>
 </head>
 
 <body>
+  
   <header>
-
+    <div class="wrapper" id="confetti">
     <div class="heading">
-      <a class="button" id="favoritesBtn" href="./favorites.html">Favorites</a>
+      <a class="button right" id="favoritesBtn" href="./favorites.html">Favorites</a>
       <h1 class="title" id="title">Cards Against Apathy</h1>
     </div>
 
-
-    
-    
     <div id="mainMenu" class="mainMenu">
       <h2 id="numberOfCards">How many exercises?</h2>
       <div id="numberOfCardsDropdown">
         <div class="row">
-          <div class="small-10 columns" style="width:55%; margin:auto" >
+          <div class="small-10 columns" style="width:55%; margin:auto">
             <div class="slider" data-slider data-initial-start="1" data-end="10">
               <span class="slider-handle" data-slider-handle role="slider" tabindex="1"
                 aria-controls="sliderOutput1"></span>
@@ -41,11 +43,21 @@
 
       <h2 id="suitChoice">Choose your style of exercise! </h2>
       <!-- Replace with images and change to words on hover -->
-      <input type="radio" class="radio-button" name="suitBtn" id="clubsIcon" value="Clubs"></input><label class="icon clubs-icon" for="clubsIcon"><span class="suits">&clubs;</span><span class="workout">Plyometrics</span></label>
-      <input type="radio" class="radio-button" name="suitBtn" id="diamondsIcon" value="Diamonds" ></input><label class="icon diamonds-icon" for="diamondsIcon"><span class="suits">&diams;</span><span class="workout">Abdominals</span></label>
-      <input type="radio" class="radio-button" name="suitBtn" id="heartsIcon" value="Hearts"></input> <label class="icon hearts-icon" for="heartsIcon"><span class="suits">&hearts;</span><span class="workout">Cardio</span></label>
-      <input type="radio" class="radio-button" name="suitBtn" id="spadesIcon" value="Spades"></input> <label class="icon spades-icon" for="spadesIcon"><span class="suits">&spades;</span><span class="workout">Strength</span></label>
-      <input type="radio" class="radio-button" name="suitBtn" id="full-workout" value="Full Workout"></input><label class="icon full-workout-icon" for="full-workout"><span class="suits">&clubs;&diams;&hearts;&spades;</span><span class="workout">Full House</span></label>
+      <input type="radio" class="radio-button" name="suitBtn" id="clubsIcon" value="Clubs"></input><label
+        class="icon clubs-icon" for="clubsIcon"><span class="suits">&clubs;</span><span
+          class="workout">Plyometrics</span></label>
+      <input type="radio" class="radio-button" name="suitBtn" id="diamondsIcon" value="Diamonds"></input><label
+        class="icon diamonds-icon" for="diamondsIcon"><span class="suits">&diams;</span><span
+          class="workout">Abdominals</span></label>
+      <input type="radio" class="radio-button" name="suitBtn" id="heartsIcon" value="Hearts"></input> <label
+        class="icon hearts-icon" for="heartsIcon"><span class="suits">&hearts;</span><span
+          class="workout">Cardio</span></label>
+      <input type="radio" class="radio-button" name="suitBtn" id="spadesIcon" value="Spades"></input> <label
+        class="icon spades-icon" for="spadesIcon"><span class="suits">&spades;</span><span
+          class="workout">Strength</span></label>
+      <input type="radio" class="radio-button" name="suitBtn" id="full-workout" value="Full Workout"></input><label
+        class="icon full-workout-icon" for="full-workout"><span class="suits">&clubs;&diams;&hearts;&spades;</span><span
+          class="workout">Full House</span></label>
       <div id="submitContainer">
 
         <button class="button" id="submitBtn" style="margin-top:1rem">Let's start sweatin'!</button>
@@ -66,12 +78,15 @@
 
   <!--------------------------------------- END GAME --------------------------------------------->
   <!--GY-->
-  <div class="row footer">
-    <div class="columns">
-      <!-- "Workout Complete" Button that will replace the default "complete" button on the final card.
-          It will be hidden by default once the other sections and buttons are completed.-->
-      <a class="button" id="workoutCompleteBtn" data-open="endgameModal" style="text-align:center" >Workout Complete!</a>
 
+  <div class="row footer">
+    <!-- "Workout Complete" Button that will appear when last card is flipped.
+          It will be hidden by default once the other sections and buttons are completed.-->
+  
+       
+
+    <div class="columns">
+      <button class="button right" id="workoutCompleteBtn" data-open="endgameModal">Workout Complete!</button>
       <!-- End Game modal with "go back" button and "save workout" button -->
       <div class="reveal" id="endgameModal" data-reveal>
         <h1>CONGRATULATIONS!</h1>
@@ -100,11 +115,9 @@
   </div>
 
 
+
+</div>
   <!--------------------------------------- SAVED WORKOUT SCREEN (Pending) ------------------------------------------------------>
-
-  <section id="favoriteList"></section>
-
-
 
 
   <script href="js/vendor/modernizr.js"></script>
@@ -113,11 +126,12 @@
   <script src="./assets/js/app.js"></script>
   <script src="./assets/js/vendor/what-input.js"></script>
   <script src="./assets/js/script.js"></script>
+  <script src="./assets/js/confetti.js"></script>
   <script src="./assets/js/gameEnd.js"></script>
+  
 
 
 
 </body>
 
 </html>
-
