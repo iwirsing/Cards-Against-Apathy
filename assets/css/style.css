@@ -28,7 +28,7 @@ h2 {
 }
 
 .button {
-    background-color: green;
+    background-color: #293a48;
     border-radius: 10px;
     font-size: 1.5rem;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -168,7 +168,7 @@ h1 {
 
 
 .footer {
-    background-image: url(https://www.free-freecell-solitaire.com/solitaire/images/backgrounds/1920x1200/green_felt.jpg);
+    background-color: url(https://www.free-freecell-solitaire.com/solitaire/images/backgrounds/1920x1200/green_felt.jpg);
 }
 
 .favoritesBackground {
@@ -228,7 +228,6 @@ h1 {
 
 .button:active {
     transform: scale(1.02);
-<<<<<<< HEAD
 }
 
 /*Confetti*/
@@ -251,28 +250,3 @@ h1 {
 .blue {
     background-color: #263672;
 }
-=======
-  }
-
-  /*Confetti*/
-  .wrapper {
-    position: relative;
-  }
-  
-  [class|="confetti"] {
-    position: absolute;
-  }
-  
-  .red {
-    background-color: #d13447;
-  }
-  
-  .yellow {
-    background-color: #ffbf00;
-  }
-  
-  .blue {
-    background-color: #263672;
-  }
-
->>>>>>> 6f2621357bd0ad06119f4e1eb7385c56c8628770
