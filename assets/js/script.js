@@ -302,9 +302,7 @@ $(document).on("click", "#cardImgDrawn", function (event) {
         //change back to color
         this.classList.remove('grayOut');
         this.parentNode.parentNode.querySelector(".text-block").setAttribute("style","display:none");
-        
-       
-
+    
     }
     else {
         //gray out
@@ -314,8 +312,18 @@ $(document).on("click", "#cardImgDrawn", function (event) {
          this.parentNode.parentNode.querySelector(".text-block").setAttribute("style","display:block;position:absolute;top:150px;left:30%; z-index:7;font-size:2rem;");
        
     }
-    
+    //capture how many cards there are
+    let numCardsDrawn = document.getElementsByClassName('card').length;
+    //capture how many cards are grayed out 
+    let numGreyCards = document.getElementsByClassName('grayOut').length;
+    if (numCardsDrawn===numGreyCards){
+        console.log("all cards grayed");
+        document.querySelector("#workoutComplete").setAttribute("style","display:block");
+    }
+    else{
+        document.querySelector("#workoutComplete").setAttribute("style","display:none");
+    }
 
-   
-    
 })
+
+//determine workout completed
