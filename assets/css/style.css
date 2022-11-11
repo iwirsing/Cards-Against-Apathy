@@ -228,6 +228,7 @@ h1 {
 
 .button:active {
     transform: scale(1.02);
+<<<<<<< HEAD
 }
 
 /*Confetti*/
@@ -250,3 +251,28 @@ h1 {
 .blue {
     background-color: #263672;
 }
+=======
+  }
+
+  /*Confetti*/
+  .wrapper {
+    position: relative;
+  }
+  
+  [class|="confetti"] {
+    position: absolute;
+  }
+  
+  .red {
+    background-color: #d13447;
+  }
+  
+  .yellow {
+    background-color: #ffbf00;
+  }
+  
+  .blue {
+    background-color: #263672;
+  }
+
+>>>>>>> 6f2621357bd0ad06119f4e1eb7385c56c8628770
