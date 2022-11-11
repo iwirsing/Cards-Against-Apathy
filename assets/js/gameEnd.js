@@ -70,7 +70,6 @@ function goToFavorites() {
 }
 
 
-
 //when DOM changes, reset the assigned elements
 var oldHref = document.location.href;
 
