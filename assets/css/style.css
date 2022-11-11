@@ -18,17 +18,19 @@ h1 {
     margin-bottom: 0;
 }
 
-h2{
+h2 {
     font-size: 2rem;
 }
+
 .heading {
     background-color: black;
     color: goldenrod;
 }
-.button{
+
+.button {
     background-color: green;
     border-radius: 10px;
-    font-size:1.5rem;
+    font-size: 1.5rem;
 }
 
 h2,
@@ -235,5 +237,8 @@ h3 {
 
 .footer {
     background-image: url(https://www.free-freecell-solitaire.com/solitaire/images/backgrounds/1920x1200/green_felt.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
