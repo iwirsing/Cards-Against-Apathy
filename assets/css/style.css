@@ -162,7 +162,10 @@ h1 {
 .reveal {
     background-color: goldenrod;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
     color: white;
+    justify-content: center;
+    border-radius: 25px;
 }
 
 
@@ -172,7 +175,7 @@ h1 {
 }
 
 .favoritesBackground {
-    background-image: url(https://t4.ftcdn.net/jpg/03/00/06/59/360_F_300065992_rFZjeJkXNh6ws8sYGGyGvhpxt7lwpgSX.jpg);
+    background-image: url(https://textures.world/wp-content/uploads/2018/10/Seamless-Black-Wood-Texture-18-copy.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
