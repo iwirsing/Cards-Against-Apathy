@@ -220,12 +220,11 @@ function displayCards(card, exerciseIndex) {
             //create card div
             var cardDiv = document.createElement("div");
             cardDiv.setAttribute("class", "card");
-            cardDiv.setAttribute("style", "width:250px");
+            cardDiv.setAttribute("style", "width:250px; border-radius:15px");
             //create img element
-
             var cardImgDisplay = document.createElement("img");
             cardImgDisplay.setAttribute("src", cardImg);
-            cardImgDisplay.setAttribute('id', 'cardImgDrawn')
+            cardImgDisplay.setAttribute('id', 'cardImgDrawn');
             //create card divider
             var cardDivider = document.createElement("div");
             cardDivider.setAttribute("class", "card-divider");
@@ -233,12 +232,12 @@ function displayCards(card, exerciseIndex) {
 
             if (cardSuit == 'HEARTS') {
                 cardDivider.setAttribute("style", "justify-content:center")
-            cardDivider.textContent = cardValue+" Minute(s) of "+ result[exerciseIndex].name;
+                cardDivider.textContent = cardValue + " Minute(s) of " + result[exerciseIndex].name;
             } else {
                 cardDivider.setAttribute("style", "justify-content:center")
-            cardDivider.textContent = cardValue+" rep(s) of "+ result[exerciseIndex].name;
+                cardDivider.textContent = cardValue + " rep(s) of " + result[exerciseIndex].name;
             }
-            
+
 
             //create exercise description
             var exerciseText = document.createElement("div");

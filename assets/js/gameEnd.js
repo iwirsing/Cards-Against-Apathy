@@ -126,6 +126,12 @@ function showFavorites() {
   for (var i=0;i<savedWorkouts.length;i++){
     console.log("save "+i)
     let button = document.createElement('div');
+<<<<<<< HEAD
+    div.textContent = savedWorkout;
+    button.setAttribute('class', 'button')
+    document.getElementById('favoriteList').append(button);
+  })
+=======
     button.textContent = savedWorkouts[i];
     button.setAttribute('class','button savedWorkout');
     console.log(button);
@@ -201,4 +207,5 @@ function printSaved(card){
   colDiv.appendChild(cardDiv);
   $("#favoriteCards").append(colDiv);
 
+>>>>>>> df876e1ac45088e414a9b1452474c69c0693c92d
 }
