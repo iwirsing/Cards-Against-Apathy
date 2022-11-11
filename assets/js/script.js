@@ -14,7 +14,7 @@ var deckURL = 'https://www.deckofcardsapi.com/api/deck/'
 function drawCardsAPI(cardNum, suit) {
     // url for shuffling and putting all cards back: https://www.deckofcardsapi.com/api/deck/8nlbluqizznt/shuffle/?remaining=false
     //url for shuffling the remaining cards: https://www.deckofcardsapi.com/api/deck/8nlbluqizznt/shuffle/?remaining=true
-    // url for getting cads: https://www.deckofcardsapi.com/api/deck/<<deck_id>>/draw/?count=2
+    // url for getting cards: https://www.deckofcardsapi.com/api/deck/<<deck_id>>/draw/?count=2
     //shuffle cards
     //https://www.deckofcardsapi.com/api/deck/4m4xrszvu5ex/shuffle/?remaining=false
 
@@ -141,7 +141,24 @@ function drawCardsAPI(cardNum, suit) {
 
 }
 
-//display drawn cards
+// This function is supposed to display the backs of cards when the user selects "Let's start sweatim'"
+// function displayCardBacks(cardBack, cardNum) {
+//     var cardBacksDiv = document.querySelector(".cardBacks");
+//     for (cardNum = 1; cardNum > 1; cardBacksDiv++) {
+//     cardBacksDiv.insertAdjacentHTML("beforeend", `
+//     <div>
+//         <img src="assets/images/cardBack.png" alt="the back of a card">
+//     </div>
+//     `)
+//     }
+// }
+
+// When the user clicks on a card it will stay flipped
+// function flipCard() {
+//     card.onclick = displayCards();
+// }
+
+//display flipped cards
 function displayCards(card, exerciseIndex) {
     console.log(card);
     //grab important values
