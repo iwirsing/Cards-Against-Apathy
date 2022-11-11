@@ -1,12 +1,12 @@
 let workoutCompleteBtn = document.getElementById('workoutCompleteBtn')
 
 workoutCompleteBtn.addEventListener("click", function() {
-    for (var i = 0; i < 250; i++) {
+    for (var i = 0; i < 200; i++) {
         create(i);
       }
       
       function create(i) {
-        var width = Math.random() * 10;
+        var width = Math.random() * 8;
         var height = width * 3;
         var colourIdx = Math.ceil(Math.random() * 3);
         var colour = "red";
@@ -37,7 +37,7 @@ workoutCompleteBtn.addEventListener("click", function() {
           top: "100%",
           left: "+="+Math.random()*15+"%"
         }, Math.random()*2000 + 2000, function() {
-          reset(x);
+          reset(1);
         });
       }
       
@@ -46,7 +46,7 @@ workoutCompleteBtn.addEventListener("click", function() {
           "top" : -Math.random()*20+"%",
           "left" : "-="+Math.random()*15+"%"
         }, 0, function() {
-          drop(x);             
+          drop();             
         });
       }
 })
