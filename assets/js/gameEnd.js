@@ -80,7 +80,7 @@ function showFavorites() {
   savedWorkouts.forEach(savedWorkout => {
     let button = document.createElement('div');
     div.textContent = savedWorkout;
-    button.setAttribute('class','button')
+    button.setAttribute('class', 'button')
     document.getElementById('favoriteList').append(button);
   })
 }
