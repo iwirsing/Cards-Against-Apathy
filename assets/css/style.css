@@ -168,7 +168,7 @@ h1 {
 
 
 .footer {
-    background-image: url(https://www.free-freecell-solitaire.com/solitaire/images/backgrounds/1920x1200/green_felt.jpg);
+    background-color: #576d80;
 }
 
 .favoritesBackground {
@@ -198,35 +198,6 @@ h1 {
             opacity:60%;
 }
 
-
-/* Rules for flipping cards */
-/* 
-.flip-card {
-  -webkit-perspective: 1000;
-          perspective: 1000;
-  border: 0;
-  background: transparent;
-}
-
-.flip-card:hover {
-  -webkit-transform: rotateY(180deg);
-          transform: rotateY(180deg);
-}
-
-.flip-card {
-  height: 100%;
-  width: 100%;
-  background: rgba(254, 254, 254, 0.8);
-  padding: 0.25rem 0;
-}
-
-.flip-card {
-  transition: 0.6s;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-  position: relative;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
 
 #submitBtn {
     box-shadow:
@@ -263,6 +234,7 @@ h1 {
   /*Confetti*/
   .wrapper {
     position: relative;
+    max-width: 100%;
   }
   
   [class|="confetti"] {
