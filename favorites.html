@@ -24,13 +24,30 @@
     </a>
 
     <header>
-        <h1>Favorite Workouts</h1>
+        <h1 style="text-align:center">Favorite Workouts</h1>
     </header>
     <main>
-        <div id="favoriteList">
+        <div style="margin-left:.5rem" id="favoriteList">
 
         </div>
 
+        <div class="row small-up-2 medium-up-3 workout-cards"  id="favoriteCards">
+
+        </div>
+
+        <!--Secondary Modal pops up for saving your workout-->
+      <div class="reveal" id="saveModal" data-reveal style="display:none">
+        <h2>Pick a name for your workout!</h2>
+        <form>
+          <div class="medium-12 cell">
+            <input type="text" id="workoutName" placeholder="Type awesome name for your workout here!">
+          </div>
+          <input class="button" id="saveButton" value="Save to Favorites">
+        </form>
+        <a class="secondary button" data-close id="goBack">Go Back</a>
+        <span aria-hidden="true"></span>
+        </button>
+      </div>
     </main>
     <script href="js/vendor/modernizr.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -40,6 +57,7 @@
     <script src="./assets/js/vendor/what-input.js"></script>
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/gameEnd.js"></script>
+    <script src="./assets/js/favorites.js"></script>
   </body>
   
   </html>

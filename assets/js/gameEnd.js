@@ -47,10 +47,22 @@ saveBtn.addEventListener('click', function () {
 
   // save key/value pair [workout name | array of cards drawn] to storage
   let numCardsDrawn = document.getElementsByClassName('card').length;
+  let card=document.getElementsByClassName('card');
   console.log(document.getElementsByClassName('card'));
   let cardsDrawn = [];
   for (let i = 0; i < numCardsDrawn; i++) {
-    cardsDrawn.push(document.getElementsByClassName('card')[i].innerHTML)
+    let cardData=[];
+    //the link to the card picture
+    cardData.push(card[i].children[0].src);
+    console.log(card[i].children[0].src);
+    //title of workout
+    cardData.push(card[i].children[1].innerText);
+    console.log(card[i].children[1].innerText);
+    //instruction of workout
+    cardData.push(card[i].children[2].innerText);
+    console.log(card[i].children[2].innerText);
+    
+    cardsDrawn.push(cardData)
   }
 
   console.log(cardsDrawn);
@@ -58,16 +70,49 @@ saveBtn.addEventListener('click', function () {
   console.log(name);
   console.log(JSON.stringify(cardsDrawn));
   localStorage.setItem(name, JSON.stringify(cardsDrawn));
-
-  goToFavorites()
+  
+  goToFavorites();
 })
 
 
 //This Function takes you to the favorites page (favorites.html)
 function goToFavorites() {
   document.location.assign('./favorites.html');
-  showFavorites()
+
+  setTimeout(function () {showFavorites()}, 2000);
+  
 }
+
+
+
+//when DOM changes, reset the assigned elements
+var oldHref = document.location.href;
+
+window.onload = function() {
+    var bodyList = document.querySelector("body")
+
+    var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (oldHref != document.location.href) {
+                oldHref = document.location.href;
+                /* Changed ! your code here */
+                
+            }
+        });
+    });
+    
+    var config = {
+        childList: true,
+        subtree: true
+    };
+    
+    observer.observe(bodyList, config);
+};
+
+
+
+
+
 
 //Retrieve Name and exercises
 
@@ -75,13 +120,85 @@ const favoritesStage = document.getElementById('favoritesStage');
 
 function showFavorites() {
   //Append workout name as a button to UI in favorites.html
-  let savedWorkouts = localStorage.getItem('savedWorkouts').split(',');
+  let savedWorkouts =localStorage.getItem('savedWorkouts').split(',');
+  console.log(savedWorkouts);
 
-  savedWorkouts.forEach(savedWorkout => {
+  for (var i=0;i<savedWorkouts.length;i++){
+    console.log("save "+i)
     let button = document.createElement('div');
-    div.textContent = savedWorkout;
-    button.setAttribute('class','button')
-    document.getElementById('favoriteList').append(button);
-  })
+    button.textContent = savedWorkouts[i];
+    button.setAttribute('class','button savedWorkout');
+    console.log(button);
+    document.querySelector('#favoriteList').append(button);
+
+  }
+  // savedWorkouts.forEach(savedWorkout => {
+  //   let button = document.createElement('div');
+  //   button.textContent = savedWorkout;
+  //   button.setAttribute('class','button');
+  //   console.log(button);
+  //   document.querySelector('#favoriteList').append(button);
+  // })
 }
-document.location('./favorites.html')
+
+
+//listen to favorite buttons
+$(document).on("click",".savedWorkout",function(event){
+  event.preventDefault();
+
+  //go to location
+  // window.location.href="./index.html";
+  // document.location.assign('./index.html');  
+    
+  let keyValue=event.currentTarget.innerText;
+  console.log(keyValue);
+
+  //get element
+  let cardSaved=JSON.parse(localStorage.getItem(keyValue));
+  console.log(cardSaved);
+
+    //empty printing area
+  $("#favoriteCards").empty();
+
+    //print card 
+  for (var i=0;i<cardSaved.length;i++){
+    console.log(cardSaved[i]);
+    printSaved(cardSaved[i]);
+  }
+
+})
+
+//print out cards for the saved workout
+function printSaved(card){
+ 
+  //print
+  //create column div 
+  var colDiv = document.createElement("div");
+  colDiv.setAttribute("class", "column")
+  colDiv.setAttribute("style", "margin:10px")
+  //create card div
+  var cardDiv = document.createElement("div");
+  cardDiv.setAttribute("class", "card");
+  cardDiv.setAttribute("style", "width:250px");
+  //create img element
+  var cardImgDisplay = document.createElement("img");
+  cardImgDisplay.setAttribute("src", card[0]);
+  cardImgDisplay.setAttribute('id', 'cardImgDrawn')
+  //create card divider
+  var cardDivider = document.createElement("div");
+  cardDivider.setAttribute("class", "card-divider");
+  cardDivider.setAttribute("id", "exerciseDrawn");
+  cardDivider.textContent=card[1];
+  //create exercise description
+  var exerciseText = document.createElement("div");
+  exerciseText.textContent = card[2];
+  exerciseText.setAttribute("id", "exerciseTxtDrawn")
+  exerciseText.setAttribute("style", "padding:10%; display:none")
+
+  cardDiv.appendChild(cardImgDisplay);
+  cardDiv.appendChild(cardDivider);
+  cardDiv.appendChild(exerciseText);
+  colDiv.appendChild(cardDiv);
+  $("#favoriteCards").append(colDiv);
+
+}
