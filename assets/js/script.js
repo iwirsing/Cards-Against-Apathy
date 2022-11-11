@@ -190,8 +190,6 @@ function displayCards(card, exerciseIndex) {
     }
     if (cardSuit == 'DIAMONDS') {
         type = 'muscle=abdominals';
-
-
     }
     if (cardSuit == 'SPADES') {
         type = 'type=strength';
@@ -280,7 +278,7 @@ function submitForm(event) {
 
 $("#submitBtn").on("click", submitForm);
 
-//show exercise instructions
+//show and hide exercise instructions
 
 $(document).on("click", ".card-divider", function (event) {
 
