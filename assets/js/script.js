@@ -266,6 +266,9 @@ function displayCards(card, exerciseIndex) {
 function submitForm(event) {
     event.preventDefault(event);
 
+    //hide workout complete button
+    document.querySelector("#workoutComplete").setAttribute("style","display:none");
+
     //capture user input # of cards
     var numCards = document.querySelector("#sliderOutput1").value;
     console.log(numCards);
@@ -293,7 +296,7 @@ $(document).on("click", ".card-divider", function (event) {
 })
 
 
-//section to gray out cards when done
+//section to gray out cards when done and determine when all workout completed
 $(document).on("click", "#cardImgDrawn", function (event) {
     event.preventDefault();
     console.log(this);
@@ -305,25 +308,28 @@ $(document).on("click", "#cardImgDrawn", function (event) {
     
     }
     else {
-        //gray out
+        //gray out image
         this.setAttribute("class","grayOut");
-         // $(".text-block")
-         console.log(this.parentNode.parentNode.querySelector(".text-block").textContent);
-         this.parentNode.parentNode.querySelector(".text-block").setAttribute("style","display:block;position:absolute;top:150px;left:30%; z-index:7;font-size:2rem;");
+        // console.log(this.parentNode.parentNode.querySelector(".text-block").textContent);
+        this.parentNode.parentNode.querySelector(".text-block").setAttribute("style","display:block;position:absolute;top:150px;left:30%; z-index:7;font-size:2rem;");
        
     }
+
+    //determine workout completed
     //capture how many cards there are
     let numCardsDrawn = document.getElementsByClassName('card').length;
     //capture how many cards are grayed out 
     let numGreyCards = document.getElementsByClassName('grayOut').length;
+    
     if (numCardsDrawn===numGreyCards){
         console.log("all cards grayed");
-        document.querySelector("#workoutComplete").setAttribute("style","display:block");
+        if (!(typeof on_index==="undefined")){
+        document.querySelector("#workoutComplete").setAttribute("style","display:block");}
     }
     else{
-        document.querySelector("#workoutComplete").setAttribute("style","display:none");
+        if (!(typeof on_index==="undefined")){
+        document.querySelector("#workoutComplete").setAttribute("style","display:none");}
     }
 
 })
 
-//determine workout completed
