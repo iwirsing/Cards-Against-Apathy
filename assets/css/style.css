@@ -5,7 +5,7 @@
 }
 
 html {
-    background-color: #576d80;
+    background-color: black;
 }
 
 .title {
@@ -58,7 +58,7 @@ h3 {
 }
 
 .small-up-2 {
-    background-color: #576d80;
+    background: linear-gradient(#5a5a5a, black);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -172,7 +172,7 @@ h1 {
 
 .footer {
 
-    background-color: #576d80;
+    background-color: black;
 
 }
 
@@ -217,7 +217,7 @@ h1 {
 }
 
 .footer {
-    background-color: #576d80;
+    background-color: black;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -242,9 +242,9 @@ h1 {
     position: relative;
 
     max-width: 100%;
-  }
-  
-  [class|="confetti"] {
+}
+
+[class|="confetti"] {
 
     position: absolute;
 }
