@@ -4,15 +4,31 @@
     box-sizing: border-box;
 }
 
+html {
+    background-image: url(https://www.free-freecell-solitaire.com/solitaire/images/backgrounds/1920x1200/green_felt.jpg);
+}
+
 .title {
     text-align: center;
     font-size: 65pt;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
+h1 {
+    margin-bottom: 0;
+}
+
+h2{
+    font-size: 2rem;
+}
 .heading {
     background-color: black;
     color: goldenrod;
+}
+.button{
+    background-color: green;
+    border-radius: 10px;
+    font-size:1.5rem;
 }
 
 h2,
@@ -87,6 +103,13 @@ h3 {
     top: -25px;
 }
 
+.icon:active {
+    background-color: goldenrod;
+    color: black;
+    border: 2pt solid black;
+    transition: 0.01s;
+}
+
 .hearts-icon,
 .diamonds-icon {
     color: rgb(255, 255, 255);
@@ -125,6 +148,7 @@ h3 {
     border: none;
     color: goldenrod;
 }
+
 
 /* Rules for flipping cards */
 /* 
@@ -199,3 +223,7 @@ h3 {
   line-height: 1.3;
 }
 */
+
+.footer {
+    background-image: url(https://www.free-freecell-solitaire.com/solitaire/images/backgrounds/1920x1200/green_felt.jpg);
+}
