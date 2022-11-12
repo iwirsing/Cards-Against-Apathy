@@ -216,9 +216,11 @@ h1 {
 }
 
 .favoritesTitle {
-    color: goldenrod;
-    font-family: 'Limelight', serif;
     text-align: center;
+    font-size: calc(3 * (1.5vh + 1.1vw));
+    font-family: 'Limelight', serif;
+    -webkit-text-stroke: 1pt black;
+    text-shadow: 2px 2px goldenrod;
 }
 
 .savedWorkout {
