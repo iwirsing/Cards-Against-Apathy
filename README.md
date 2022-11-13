@@ -24,10 +24,11 @@ The project runs in the browser, and does not require an installation.
 When the user opens the website, they will be prompted to select a suit, which corresponds to a type of exercise, and the number of cards that will be drawn (the number of exercises that will be performed).  When both of these selections have been made, the set amount of cards will appear, faced down.  When the user clicks on the cards, they will flip over, revealing the card, exercise, and a button that provides a description of the workout if clicked.  Once the exercise is completed, the card can be clicked again to gray it out, marking it as completed.  Upon completion of the workout, a modal appears, congratulating the user and providing two options: either going back, thus refreshing the page, or saving the workout as a favorite.  Should they choose to save a favorite workout, they will need to name it and hit save.  It will be saved in local storage whenever the user decides to return to it.
 
 
-## Screenshot (to be added later)
+## Screenshot
 ![Screenshot](CardsAgainstApathyScreenshot.png "Screenshot of application's home page")
 
 ## Links
+Video demo: https://youtu.be/s0dPTozQHYM
 The site: https://the-fighting-mongooses-official.github.io/project-1/
 Github: https://github.com/The-Fighting-Mongooses-Official/project-1   
 
