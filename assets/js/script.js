@@ -208,10 +208,31 @@ function displayCards(card, exerciseIndex) {
         .then(result => {
             console.log(result);
 
+            // create cardz for flipping
+            var cardContainer = document.createElement("div");
+            cardContainer.setAttribute("class", "cardz")
+
+            //create main flipper
+            var cardInner = document.createElement("div");
+            cardInner.setAttribute("class", "card__inner")
+
+            //create card face front
+            var cardFront = document.createElement("div");
+            cardFront.setAttribute("class", "card__face card__face--front")
+
+            //create img
+            var backCard=document.createElement("img");
+            backCard.setAttribute("src","./assets/images/cardBack.png");
+            backCard.setAttribute("style","width:250px; height:400px;");
+
+            //append
+            cardFront.appendChild(backCard);
+            cardInner.appendChild(cardFront);
+            
             //create column div 
             var colDiv = document.createElement("div");
-            colDiv.setAttribute("class", "column")
-            colDiv.setAttribute("style", "margin:10px;position:relative")
+            colDiv.setAttribute("class", "column card__face card__face--back")
+            colDiv.setAttribute("style", "margin:0 0 0 0; position:relative")
             //create card div
             var cardDiv = document.createElement("div");
             cardDiv.setAttribute("class", "card");
@@ -229,7 +250,7 @@ function displayCards(card, exerciseIndex) {
             var doneDiv = document.createElement("div");
             doneDiv.setAttribute("class", "text-block");
             doneDiv.setAttribute("style", "position:absolute;top:150px;left:30%; z-index:7;font-size:2rem;display:none");
-            doneDiv.textContent = 'D O N E';
+            doneDiv.textContent='D O N E';
 
             if (cardSuit == 'HEARTS') {
                 cardDivider.setAttribute("style", "justify-content:center")
@@ -239,13 +260,11 @@ function displayCards(card, exerciseIndex) {
                 cardDivider.textContent = cardValue + " rep(s) of " + result[exerciseIndex].name;
             }
 
-
             //create exercise description
             var exerciseText = document.createElement("div");
             exerciseText.textContent = result[exerciseIndex].instructions;
             exerciseText.setAttribute("id", "exerciseTxtDrawn");
             exerciseText.setAttribute("style", "padding:10%; display:none");
-
 
             //append to DOM
 
@@ -254,7 +273,10 @@ function displayCards(card, exerciseIndex) {
             cardDiv.appendChild(exerciseText);
             colDiv.appendChild(cardDiv);
             colDiv.appendChild(doneDiv);
-            $("#rowCards").append(colDiv);
+            cardInner.appendChild(colDiv);
+            cardContainer.appendChild(cardInner);
+
+            $("#rowCards").append(cardContainer);
 
         }
         )
@@ -333,5 +355,11 @@ $(document).on("click", "#cardImgDrawn", function (event) {
         }
     }
 
+})
+
+//flip
+
+$(document).on("click",".card__inner",function(){
+    this.classList.add('is-flipped');
 })
 
