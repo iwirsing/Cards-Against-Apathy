@@ -229,7 +229,7 @@ function displayCards(card, exerciseIndex) {
             var doneDiv = document.createElement("div");
             doneDiv.setAttribute("class", "text-block");
             doneDiv.setAttribute("style", "position:absolute;top:150px;left:30%; z-index:7;font-size:2rem;display:none");
-            doneDiv.textContent='D O N E';
+            doneDiv.textContent = 'D O N E';
 
             if (cardSuit == 'HEARTS') {
                 cardDivider.setAttribute("style", "justify-content:center")
@@ -267,7 +267,7 @@ function submitForm(event) {
     event.preventDefault(event);
 
     //hide workout complete button
-    document.querySelector("#workoutComplete").setAttribute("style","display:none");
+    document.querySelector("#workoutComplete").setAttribute("style", "display:none");
 
     //capture user input # of cards
     var numCards = document.querySelector("#sliderOutput1").value;
@@ -300,19 +300,19 @@ $(document).on("click", ".card-divider", function (event) {
 $(document).on("click", "#cardImgDrawn", function (event) {
     event.preventDefault();
     console.log(this);
-     
-    if (this.classList.contains('grayOut')){
+
+    if (this.classList.contains('grayOut')) {
         //change back to color
         this.classList.remove('grayOut');
-        this.parentNode.parentNode.querySelector(".text-block").setAttribute("style","display:none");
-    
+        this.parentNode.parentNode.querySelector(".text-block").setAttribute("style", "display:none");
+
     }
     else {
         //gray out image
-        this.setAttribute("class","grayOut");
+        this.setAttribute("class", "grayOut");
         // console.log(this.parentNode.parentNode.querySelector(".text-block").textContent);
-        this.parentNode.parentNode.querySelector(".text-block").setAttribute("style","display:block;position:absolute;top:150px;left:30%; z-index:7;font-size:2rem;");
-       
+        this.parentNode.parentNode.querySelector(".text-block").setAttribute("style", "display:block;position:absolute;top:150px;left:30%; z-index:7;font-size:2rem;");
+
     }
 
     //determine workout completed
@@ -320,15 +320,17 @@ $(document).on("click", "#cardImgDrawn", function (event) {
     let numCardsDrawn = document.getElementsByClassName('card').length;
     //capture how many cards are grayed out 
     let numGreyCards = document.getElementsByClassName('grayOut').length;
-    
-    if (numCardsDrawn===numGreyCards){
+
+    if (numCardsDrawn === numGreyCards) {
         console.log("all cards grayed");
-        if (!(typeof on_index==="undefined")){
-        document.querySelector("#workoutComplete").setAttribute("style","display:block");}
+        if (!(typeof on_index === "undefined")) {
+            document.querySelector("#workoutComplete").setAttribute("style", "display:block");
+        }
     }
-    else{
-        if (!(typeof on_index==="undefined")){
-        document.querySelector("#workoutComplete").setAttribute("style","display:none");}
+    else {
+        if (!(typeof on_index === "undefined")) {
+            document.querySelector("#workoutComplete").setAttribute("style", "display:none");
+        }
     }
 
 })

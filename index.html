@@ -13,6 +13,8 @@
 </link>
 <link rel="stylesheet" href="./assets/css/style.css">
 </link>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Limelight">
+</link>
 
 <title>Cards Against Apathy</title>
 </head>
@@ -22,21 +24,21 @@
     <header>
       <div class="heading">
         <a class="button right" id="favoritesBtn" href="./favorites.html">Favorites</a>
-        <h1 class="title" id="title">Cards Against Apathy</h1>
+        <h1 class="title" id="title">CARDS AGAINST APATHY</h1>
       </div>
 
       <div id="mainMenu" class="mainMenu">
-        <h2 id="numberOfCards">How many exercises?</h2>
+        <h2 id="numberOfCards" style="margin: 30pt">How many exercises?</h2>
         <div id="numberOfCardsDropdown">
           <div class="row">
             <div class="small-10 columns" style="width:55%; margin:auto">
-              <div class="slider" data-slider data-initial-start="1" data-end="10">
+              <div class="slider" data-slider data-initial-start="3" data-start="1" data-end="10">
                 <span class="slider-handle" data-slider-handle role="slider" tabindex="1"
                   aria-controls="sliderOutput1"></span>
                 <span class="slider-fill" data-slider-fill></span>
               </div>
             </div>
-            <input class="small-2 columns" type="number" id="sliderOutput1" style="width:25%; margin:auto; margin-bottom: 40px;"></input>
+            <input class="small-2 columns" type="number" id="sliderOutput1" style="width:25%; margin:auto;"></input>
           </div>
         </div>
 
@@ -58,9 +60,9 @@
         <input type="radio" class="radio-button" name="suitBtn" id="full-workout" value="Full Workout"></input><label
           class="icon full-workout-icon" for="full-workout"><span
             class="suits">&clubs;&diams;&hearts;&spades;</span><span class="workout">Full House</span></label>
-        <div id="submitContainer">
+        <div id="submitContainer" style="margin: 15pt">
 
-          <button class="button" id="submitBtn" style="margin-top:1rem">Let's start sweatin'!</button>
+          <button class="button" id="submitBtn" style="margin-top:1rem">BEGIN</button>
 
         </div>
 
