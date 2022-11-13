@@ -25,7 +25,7 @@ When the user opens the website, they will be prompted to select a suit, which c
 
 
 ## Screenshot
-![Screenshot](CardsAgainstApathyScreenshot.png "Screenshot of application's home page")
+![Screenshot](./assets/images/CardsAgainstApathyScreenshot.png)
 
 ## Links
 Video demo: https://youtu.be/s0dPTozQHYM
