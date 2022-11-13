@@ -1,13 +1,13 @@
 let workoutCompleteBtn = document.getElementById('workoutCompleteBtn')
 
 workoutCompleteBtn.addEventListener("click", function() {
-    for (var i = 0; i < 200; i++) {
+    for (var i = 0; i < 100; i++) {
         create(i);
       }
       
       function create(i) {
-        var width = Math.random() * 8;
-        var height = width * 3;
+        var width = Math.random() * 30;
+        var height = width * 5;
         var colourIdx = Math.ceil(Math.random() * 3);
         var colour = "red";
         switch(colourIdx) {
