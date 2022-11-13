@@ -2,16 +2,12 @@
 
 ## Description
 
-Cards Against Apathy is a brand new exercise app meant to bring fun and surprise into your workouts.  Created for users with a sense of adventure and spontaneity, this app gamifies the workout experience, randomizing the exercises the user will be performing using a deck of cards.  Should the user like the workout they performed, they will be able to save the series of activities into their personalized favorites section, where they will be able to find it whenever they'd like.
+Cards Against Apathy is a brand new exercise app meant to bring fun and surprise into your workouts.  Created for users with a sense of adventure and spontaneity, this app gamifies the workout experience, randomizing the exercises the user will be performing using a deck of cards.  Should the user like the workout they performed, they can save the series of activities into their personalized favorites section, where they will be able to find it whenever they'd like.
 
-This project was constructed by four people who wanted to either focus on working out more, or excite their experience at home while staying healthy.  After sitting for hours on the computer for work and school, getting up, out and moving was extremely important to them, and this app set out to create the program they were looking for.  It respects the user's time by performing the workout research for them, allowing for a quicker, playful excercise regimen.
-
-- What did you learn?
+This project was constructed by four people who wanted to either focus on working out more, or excite their experience at home while staying healthy.  After sitting for hours on the computer for work and school, getting up, out and moving was extremely important to them, and this app set out to create what they were looking for.  It respects the user's time by performing the workout research for them, allowing for a quicker, playful excercise regimen.
 
 
-## Table of Contents (Optional)
-
-If your README is long, add a table of contents to make it easy for users to find what they need.
+## Table of Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
@@ -29,12 +25,11 @@ When the user opens the website, they will be prompted to select a suit, which c
 
 
 ## Screenshot (to be added later)
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
+![Screenshot](CardsAgainstApathyScreenshot.png "Screenshot of application's home page")
 
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
-
+## Links
+The site: https://the-fighting-mongooses-official.github.io/project-1/
+Github: https://github.com/The-Fighting-Mongooses-Official/project-1   
 
 ## Credits
 
@@ -42,18 +37,6 @@ Ivy Wirsing
 Grace Yao
 Andrew Phinney
 Mark Calcagno
-
-
-## Badges
-
-![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)
-
-Badges aren't necessary, per se, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
-
-
-## How to Contribute
-
-If you created an application or package and would like other developers to contribute it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
 
 
 ## Future Development
