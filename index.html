@@ -86,7 +86,7 @@
   <div class="row footer" id="workoutComplete" style="display:none" >
     <!-- "Workout Complete" Button that will appear when last card is flipped.
           It will be hidden by default once the other sections and buttons are completed.-->
-        <div class="columns">
+        <div class="columns" style="width:100%; text-align:center;">
           <button class="button right center-horizontal" id="workoutCompleteBtn" data-open="endgameModal" >Workout Complete!</button>
           <!-- End Game modal with "go back" button and "save workout" button -->
           <div class="reveal" id="endgameModal" data-reveal>
@@ -102,7 +102,7 @@
 
           <!--Secondary Modal pops up for saving your workout-->
           <div class="reveal" id="saveModal" data-reveal>
-            <h2>Pick a name for your workout!</h2>
+            <h2 class="noteName">Pick a name for your workout!</h2>
             <form>
               <div class="medium-12 cell">
                 <input type="text" id="workoutName" placeholder="Type awesome name for your workout here!">

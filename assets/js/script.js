@@ -6,15 +6,21 @@ var diamondsDeckID = 'w03icwg2n6ga';
 var heartsDeckID = '4admp62snbza';
 var spadesDeckID = 'kjg7a4bfgs5o';
 var exerName;
-var exerInstructions;
-// var exerciseArray=[];
-
+var exerInstructions;   
 var deckURL = 'https://www.deckofcardsapi.com/api/deck/'
 
+//FUNCTION that draws cards
 function drawCardsAPI(cardNum, suit) {
 
-    //clear display
+    //clear display and reset 
     $("#rowCards").empty();
+    //remove confetti if any   
+    for (var i = 0; i < 100; i++) {
+    if ($(".confetti-"+i)){
+    $(".confetti-"+i).remove();  }
+    }
+    //reset modal h2
+    document.querySelector(".noteName").innerHTML="Pick a name for your workout!";
 
     //check suit type
     if (suit === "Clubs") {
@@ -27,13 +33,9 @@ function drawCardsAPI(cardNum, suit) {
                 .then(fetch(clubsUrl)
                     .then(response => response.json())
                     .then(clubsHand => {
-                        console.log(clubsHand);
 
                         for (var i = 0; i < clubsHand.cards.length; i++) {
                             var clubCard = clubsHand.cards[i];
-
-                            console.log(clubCard);
-
                             displayCards(clubCard, i);
                         }
 
@@ -136,50 +138,28 @@ function drawCardsAPI(cardNum, suit) {
 
 }
 
-// This function is supposed to display the backs of cards when the user selects "Let's start sweatim'"
-// function displayCardBacks(cardBack, cardNum) {
-//     var cardBacksDiv = document.querySelector(".cardBacks");
-//     for (cardNum = 1; cardNum > 1; cardBacksDiv++) {
-//     cardBacksDiv.insertAdjacentHTML("beforeend", `
-//     <div>
-//         <img src="assets/images/cardBack.png" alt="the back of a card">
-//     </div>
-//     `)
-//     }
-// }
 
-// When the user clicks on a card it will stay flipped
-// function flipCard() {
-//     card.onclick = displayCards();
-// }
-
-//display flipped cards
+//FUNCTION that displays cards
 function displayCards(card, exerciseIndex) {
     console.log(card);
-    //grab important values
 
+    //grab important values
     var cardValue = card.value;
     var cardImg = card.image;
     var cardSuit = card.suit;
     var type;
 
     //card value indicates reps or minutes
-
     if ((cardValue === "JACK") || (cardValue === "QUEEN") || (cardValue === "KING")) {
         cardValue = '20';
     }
     if (cardValue === "ACE") {
         cardValue = '1';
-
     }
 
-
-    // var muscle;
     console.log(cardValue, cardImg, cardSuit);
 
     // selected suite(s) are matched with specific types of exercises
-
-
     if (cardSuit == 'HEARTS') {
         type = 'type=cardio';
     }
@@ -267,7 +247,6 @@ function displayCards(card, exerciseIndex) {
             exerciseText.setAttribute("style", "padding:10%; display:none");
 
             //append to DOM
-
             cardDiv.appendChild(cardImgDisplay);
             cardDiv.appendChild(cardDivider);
             cardDiv.appendChild(exerciseText);
@@ -284,7 +263,7 @@ function displayCards(card, exerciseIndex) {
 }
 
 
-//submit form
+//FUNCTION to submit form
 function submitForm(event) {
     event.preventDefault(event);
 
@@ -300,15 +279,12 @@ function submitForm(event) {
     console.log("suit selected is " + selectedSuit);
 
     drawCardsAPI(numCards, selectedSuit);
-
 }
 
 $("#submitBtn").on("click", submitForm);
 
-//show and hide exercise instructions
-
+//FUNCTION to show and hide exercise instructions
 $(document).on("click", ".card-divider", function (event) {
-
     event.preventDefault();
     console.log(event);
     console.log(event.currentTarget.innerText);
@@ -318,7 +294,7 @@ $(document).on("click", ".card-divider", function (event) {
 })
 
 
-//section to gray out cards when done and determine when all workout completed
+//FUNCTION section to gray out cards when done and determine when all workout completed
 $(document).on("click", "#cardImgDrawn", function (event) {
     event.preventDefault();
     console.log(this);
@@ -327,14 +303,11 @@ $(document).on("click", "#cardImgDrawn", function (event) {
         //change back to color
         this.classList.remove('grayOut');
         this.parentNode.parentNode.querySelector(".text-block").setAttribute("style", "display:none");
-
     }
     else {
         //gray out image
         this.setAttribute("class", "grayOut");
-        // console.log(this.parentNode.parentNode.querySelector(".text-block").textContent);
         this.parentNode.parentNode.querySelector(".text-block").setAttribute("style", "display:block;position:absolute;top:150px;left:30%; z-index:7;font-size:2rem;");
-
     }
 
     //determine workout completed
@@ -343,6 +316,7 @@ $(document).on("click", "#cardImgDrawn", function (event) {
     //capture how many cards are grayed out 
     let numGreyCards = document.getElementsByClassName('grayOut').length;
 
+    //if all cards are grayed out then workout complete, show workout complete button
     if (numCardsDrawn === numGreyCards) {
         console.log("all cards grayed");
         if (!(typeof on_index === "undefined")) {
@@ -352,13 +326,18 @@ $(document).on("click", "#cardImgDrawn", function (event) {
     else {
         if (!(typeof on_index === "undefined")) {
             document.querySelector("#workoutComplete").setAttribute("style", "display:none");
+
+            //remove confetti if any
+             for (var i = 0; i < 100; i++) {
+                if ($(".confetti-"+i)){
+                $(".confetti-"+i).remove();  }
+                }
         }
     }
 
 })
 
-//flip
-
+//FUNCTION to flip open drawn cards once
 $(document).on("click",".card__inner",function(){
     this.classList.add('is-flipped');
 })
