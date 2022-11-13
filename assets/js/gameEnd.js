@@ -5,7 +5,7 @@
 let goBackBtn = document.getElementById('goBack')
 goBackBtn.addEventListener('click', function () {
   //reset modal h2
-  document.querySelector(".noteName").innerHTML="Pick a name for your workout!";
+  document.querySelector(".noteName").innerHTML = "Pick a name for your workout!";
   window.location.reload();
 })
 
@@ -24,54 +24,42 @@ saveBtn.addEventListener('click', function () {
     savedNames = [];
   }
 
-  
-  let savedNameArray=localStorage.getItem('savedWorkouts').split(',');
 
-  console.log(name);
-  console.log(savedNameArray);
-  //if name to be saved already exist
-  if (savedNameArray.includes(name)){
-    console.log("name already exists");
-    //warn that name already saved
-    document.querySelector(".noteName").innerHTML="Name already exists. Choose ANOTHER name.";
-    // $(".noteName").val("That name already exists, choose a different one.");
+  let savedNameArray;
+  if (localStorage.getItem('savedWorkouts')) {
+    savedNameArray = localStorage.getItem('savedWorkouts').split(',');
+  } else {
+    savedNamesArray = [];
   }
-  else{
-    savedNames.push(name);
-    localStorage.setItem('savedWorkouts', savedNames);
+  savedNames.push(name);
+  localStorage.setItem('savedWorkouts', savedNames);
 
-    //reset modal h2
-    document.querySelector(".noteName").innerHTML="Pick a name for your workout!";
-   
+  //reset modal h2
+  document.querySelector(".noteName").innerHTML = "Pick a name for your workout!";
 
-    // save key/value pair [workout name | array of cards drawn] to storage
-    let numCardsDrawn = document.getElementsByClassName('card').length;
-    let card = document.getElementsByClassName('card');
-    console.log(document.getElementsByClassName('card'));
-    let cardsDrawn = [];
-    for (let i = 0; i < numCardsDrawn; i++) {
-      let cardData = [];
-      //the link to the card picture
-      cardData.push(card[i].children[0].src);
-      console.log(card[i].children[0].src);
-      //title of workout
-      cardData.push(card[i].children[1].innerText);
-      console.log(card[i].children[1].innerText);
-      //instruction of workout
-      cardData.push(card[i].children[2].innerText);
-      console.log(card[i].children[2].innerText);
+  // save key/value pair [workout name | array of cards drawn] to storage
+  let numCardsDrawn = document.getElementsByClassName('card').length;
+  let card = document.getElementsByClassName('card');
+  console.log(document.getElementsByClassName('card'));
+  let cardsDrawn = [];
+  for (let i = 0; i < numCardsDrawn; i++) {
+    let cardData = [];
+    //the link to the card picture
+    cardData.push(card[i].children[0].src);
+    console.log(card[i].children[0].src);
+    //title of workout
+    cardData.push(card[i].children[1].innerText);
+    console.log(card[i].children[1].innerText);
+    //instruction of workout
+    cardData.push(card[i].children[2].innerText);
+    console.log(card[i].children[2].innerText);
 
-      cardsDrawn.push(cardData)
-    }
-    localStorage.setItem(name, JSON.stringify(cardsDrawn));
-
-
-    goToFavorites();
+    cardsDrawn.push(cardData)
   }
-
-  
-})
-
+  localStorage.setItem(name, JSON.stringify(cardsDrawn));
+  goToFavorites();
+}
+)
 
 //FUNCTION that takes user to the favorites page (favorites.html)
 function goToFavorites() {
@@ -79,7 +67,6 @@ function goToFavorites() {
   setTimeout(function () { showFavorites() }, 2000);
 
 }
-
 
 //FUNCTION for when DOM changes, reset the assigned elements to the new DOM
 var oldHref = document.location.href;
@@ -91,7 +78,7 @@ window.onload = function () {
     mutations.forEach(function (mutation) {
       if (oldHref != document.location.href) {
         oldHref = document.location.href;
-  
+
       }
     });
   });
@@ -212,7 +199,7 @@ $(document).on("click", "#delWorkout", function (event) {
         if (localArray[i] === currentKeyValue) {
           //removes current key value from array
           localArray.splice(i, 1);
-          
+
           //save new and changed array to local storage
           localStorage.setItem('savedWorkouts', localArray);
 
