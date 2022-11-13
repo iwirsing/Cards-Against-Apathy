@@ -341,4 +341,3 @@ $(document).on("click", "#cardImgDrawn", function (event) {
 $(document).on("click",".card__inner",function(){
     this.classList.add('is-flipped');
 })
-
