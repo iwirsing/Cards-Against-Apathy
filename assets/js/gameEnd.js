@@ -13,11 +13,7 @@ goBackBtn.addEventListener('click', function () {
 //When you click the final save button, the name and the exercise set will be saved as a key/value pair, Name/Cards Drawn
 let saveBtn = document.getElementById('saveButton')
 
-//LOGIC
-//Save key/value pair of Workouts, workout names (append workout names to button)
-//Then key/value pair with the workout name and corresponding array of card information
-//When button is clicked for the workout name, function will run to retrieve data of the key value pair with the name being the key
-//Then the cards will display on the page based on the data retrieved  
+
 
 saveBtn.addEventListener('click', function () {
   // save key/value pair [workout names | array of workout names]
@@ -33,11 +29,11 @@ saveBtn.addEventListener('click', function () {
 
   // save key/value pair [workout name | array of cards drawn] to storage
   let numCardsDrawn = document.getElementsByClassName('card').length;
-  let card=document.getElementsByClassName('card');
+  let card = document.getElementsByClassName('card');
   console.log(document.getElementsByClassName('card'));
   let cardsDrawn = [];
   for (let i = 0; i < numCardsDrawn; i++) {
-    let cardData=[];
+    let cardData = [];
     //the link to the card picture
     cardData.push(card[i].children[0].src);
     console.log(card[i].children[0].src);
@@ -47,7 +43,7 @@ saveBtn.addEventListener('click', function () {
     //instruction of workout
     cardData.push(card[i].children[2].innerText);
     console.log(card[i].children[2].innerText);
-    
+
     cardsDrawn.push(cardData)
   }
 
@@ -56,7 +52,7 @@ saveBtn.addEventListener('click', function () {
   console.log(name);
   console.log(JSON.stringify(cardsDrawn));
   localStorage.setItem(name, JSON.stringify(cardsDrawn));
-  
+
   goToFavorites();
 })
 
@@ -65,34 +61,33 @@ saveBtn.addEventListener('click', function () {
 function goToFavorites() {
   document.location.assign('./favorites.html');
 
-  setTimeout(function () {showFavorites()}, 2000);
-  
-}
+  setTimeout(function () { showFavorites() }, 2000);
 
+}
 
 
 //when DOM changes, reset the assigned elements
 var oldHref = document.location.href;
 
-window.onload = function() {
-    var bodyList = document.querySelector("body")
+window.onload = function () {
+  var bodyList = document.querySelector("body")
 
-    var observer = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutation) {
-            if (oldHref != document.location.href) {
-                oldHref = document.location.href;
-                /* Changed ! your code here */
-                
-            }
-        });
+  var observer = new MutationObserver(function (mutations) {
+    mutations.forEach(function (mutation) {
+      if (oldHref != document.location.href) {
+        oldHref = document.location.href;
+        /* Changed ! your code here */
+
+      }
     });
-    
-    var config = {
-        childList: true,
-        subtree: true
-    };
-    
-    observer.observe(bodyList, config);
+  });
+
+  var config = {
+    childList: true,
+    subtree: true
+  };
+
+  observer.observe(bodyList, config);
 };
 
 
@@ -102,74 +97,79 @@ const favoritesStage = document.getElementById('favoritesStage');
 
 function showFavorites() {
   //Append workout name as a button to UI in favorites.html
-  let savedWorkouts =localStorage.getItem('savedWorkouts').split(',');
+  let savedWorkouts = localStorage.getItem('savedWorkouts').split(',');
   console.log(savedWorkouts);
+  if (savedWorkouts[0] != '') {
+    for (var i = 0; i < savedWorkouts.length; i++) {
+      console.log("save " + i)
+      let button = document.createElement('div');
+      button.textContent = savedWorkouts[i];
+      button.setAttribute('class', 'button savedWorkout');
+      console.log(button);
+      document.querySelector('#favoriteList').append(button);
 
-  for (var i=0;i<savedWorkouts.length;i++){
-    console.log("save "+i)
-    let button = document.createElement('div');
-<<<<<<< HEAD
-    div.textContent = savedWorkout;
-    button.setAttribute('class', 'button')
-    document.getElementById('favoriteList').append(button);
-  })
-=======
-    button.textContent = savedWorkouts[i];
-    button.setAttribute('class','button savedWorkout');
-    console.log(button);
-    document.querySelector('#favoriteList').append(button);
-
+    }
   }
 }
 
 
-//listen to favorite buttons
-$(document).on("click",".savedWorkout",function(event){
+//listen to favorite buttons, save it to current keyvalue and print cards
+
+let currentKeyValue = '';
+
+$(document).on("click", ".savedWorkout", function (event) {
   event.preventDefault();
 
-  //go to location
-  // window.location.href="./index.html";
-  // document.location.assign('./index.html');  
-    
-  let keyValue=event.currentTarget.innerText;
+  let keyValue = event.currentTarget.innerText;
   console.log(keyValue);
 
+  //save keyValue to global variable
+  currentKeyValue = keyValue;
+
   //get element
-  let cardSaved=JSON.parse(localStorage.getItem(keyValue));
+  let cardSaved = JSON.parse(localStorage.getItem(keyValue));
   console.log(cardSaved);
 
-    //empty printing area
+  //empty printing area
   $("#favoriteCards").empty();
 
+  if (cardSaved != null) {
     //print card 
-  for (var i=0;i<cardSaved.length;i++){
-    console.log(cardSaved[i]);
-    printSaved(cardSaved[i]);
+    for (var i = 0; i < cardSaved.length; i++) {
+      console.log(cardSaved[i]);
+      printSaved(cardSaved[i]);
+    }
   }
 
 })
 
 //print out cards for the saved workout
-function printSaved(card){
- 
+function printSaved(card) {
+
   //print
   //create column div 
   var colDiv = document.createElement("div");
   colDiv.setAttribute("class", "column")
-  colDiv.setAttribute("style", "margin:10px")
+  colDiv.setAttribute("style", "margin:10px;position:relative")
   //create card div
   var cardDiv = document.createElement("div");
   cardDiv.setAttribute("class", "card");
   cardDiv.setAttribute("style", "width:250px");
+  cardDiv.setAttribute('style', 'border-radius:10pt');
   //create img element
   var cardImgDisplay = document.createElement("img");
   cardImgDisplay.setAttribute("src", card[0]);
-  cardImgDisplay.setAttribute('id', 'cardImgDrawn')
+  cardImgDisplay.setAttribute('id', 'cardImgDrawn');
   //create card divider
   var cardDivider = document.createElement("div");
   cardDivider.setAttribute("class", "card-divider");
   cardDivider.setAttribute("id", "exerciseDrawn");
-  cardDivider.textContent=card[1];
+  cardDivider.textContent = card[1];
+  //create div with done
+  var doneDiv = document.createElement("div");
+  doneDiv.setAttribute("class", "text-block");
+  doneDiv.setAttribute("style", "position:absolute;top:150px;left:30%; z-index:7;font-size:2rem;display:none");
+  doneDiv.textContent = 'D O N E';
   //create exercise description
   var exerciseText = document.createElement("div");
   exerciseText.textContent = card[2];
@@ -180,7 +180,43 @@ function printSaved(card){
   cardDiv.appendChild(cardDivider);
   cardDiv.appendChild(exerciseText);
   colDiv.appendChild(cardDiv);
+  colDiv.appendChild(doneDiv);
   $("#favoriteCards").append(colDiv);
-
->>>>>>> df876e1ac45088e414a9b1452474c69c0693c92d
 }
+
+//delete current display cards using the currentKeyValue data
+$(document).on("click", "#delWorkout", function (event) {
+  event.preventDefault();
+  if (currentKeyValue) {
+    //if not empty get key value and delete it from localStorage and pop it out of stored array
+    console.log(currentKeyValue);
+
+    //remove from localstorage array 
+    let localArray = localStorage.getItem('savedWorkouts').split(',');
+    console.log(localArray);
+
+    if (localArray.includes(currentKeyValue)) {
+
+      for (var i = 0; i < localArray.length; i++) {
+        if (localArray[i] === currentKeyValue) {
+          console.log("remove it from array and push it");
+          localArray.splice(i, 1);
+          console.log(localArray);
+          //save new array to local storage
+          localStorage.setItem('savedWorkouts', localArray);
+          //remove from local storage the keyValue pair
+          localStorage.removeItem(currentKeyValue);
+
+          //display favorites again after clearing list and cards
+          $('#favoriteList').empty();
+          $('#favoriteCards').empty();
+          showFavorites();
+        }
+      }
+    }
+
+
+
+  }
+
+})

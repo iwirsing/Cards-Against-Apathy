@@ -12,11 +12,6 @@ var exerInstructions;
 var deckURL = 'https://www.deckofcardsapi.com/api/deck/'
 
 function drawCardsAPI(cardNum, suit) {
-    // url for shuffling and putting all cards back: https://www.deckofcardsapi.com/api/deck/8nlbluqizznt/shuffle/?remaining=false
-    //url for shuffling the remaining cards: https://www.deckofcardsapi.com/api/deck/8nlbluqizznt/shuffle/?remaining=true
-    // url for getting cards: https://www.deckofcardsapi.com/api/deck/<<deck_id>>/draw/?count=2
-    //shuffle cards
-    //https://www.deckofcardsapi.com/api/deck/4m4xrszvu5ex/shuffle/?remaining=false
 
     //clear display
     $("#rowCards").empty();
@@ -216,7 +211,7 @@ function displayCards(card, exerciseIndex) {
             //create column div 
             var colDiv = document.createElement("div");
             colDiv.setAttribute("class", "column")
-            colDiv.setAttribute("style", "margin:10px")
+            colDiv.setAttribute("style", "margin:10px;position:relative")
             //create card div
             var cardDiv = document.createElement("div");
             cardDiv.setAttribute("class", "card");
@@ -230,6 +225,12 @@ function displayCards(card, exerciseIndex) {
             cardDivider.setAttribute("class", "card-divider");
             cardDivider.setAttribute("id", "exerciseDrawn");
 
+            //create div with done
+            var doneDiv = document.createElement("div");
+            doneDiv.setAttribute("class", "text-block");
+            doneDiv.setAttribute("style", "position:absolute;top:150px;left:30%; z-index:7;font-size:2rem;display:none");
+            doneDiv.textContent = 'D O N E';
+
             if (cardSuit == 'HEARTS') {
                 cardDivider.setAttribute("style", "justify-content:center")
                 cardDivider.textContent = cardValue + " Minute(s) of " + result[exerciseIndex].name;
@@ -242,8 +243,8 @@ function displayCards(card, exerciseIndex) {
             //create exercise description
             var exerciseText = document.createElement("div");
             exerciseText.textContent = result[exerciseIndex].instructions;
-            exerciseText.setAttribute("id", "exerciseTxtDrawn")
-            exerciseText.setAttribute("style", "padding:10%; display:none")
+            exerciseText.setAttribute("id", "exerciseTxtDrawn");
+            exerciseText.setAttribute("style", "padding:10%; display:none");
 
 
             //append to DOM
@@ -252,6 +253,7 @@ function displayCards(card, exerciseIndex) {
             cardDiv.appendChild(cardDivider);
             cardDiv.appendChild(exerciseText);
             colDiv.appendChild(cardDiv);
+            colDiv.appendChild(doneDiv);
             $("#rowCards").append(colDiv);
 
         }
@@ -263,6 +265,9 @@ function displayCards(card, exerciseIndex) {
 //submit form
 function submitForm(event) {
     event.preventDefault(event);
+
+    //hide workout complete button
+    document.querySelector("#workoutComplete").setAttribute("style", "display:none");
 
     //capture user input # of cards
     var numCards = document.querySelector("#sliderOutput1").value;
@@ -289,3 +294,44 @@ $(document).on("click", ".card-divider", function (event) {
     var display = event.target.parentNode.querySelector("#exerciseTxtDrawn");
     display.style.display = display.style.display == "none" ? "block" : "none";
 })
+
+
+//section to gray out cards when done and determine when all workout completed
+$(document).on("click", "#cardImgDrawn", function (event) {
+    event.preventDefault();
+    console.log(this);
+
+    if (this.classList.contains('grayOut')) {
+        //change back to color
+        this.classList.remove('grayOut');
+        this.parentNode.parentNode.querySelector(".text-block").setAttribute("style", "display:none");
+
+    }
+    else {
+        //gray out image
+        this.setAttribute("class", "grayOut");
+        // console.log(this.parentNode.parentNode.querySelector(".text-block").textContent);
+        this.parentNode.parentNode.querySelector(".text-block").setAttribute("style", "display:block;position:absolute;top:150px;left:30%; z-index:7;font-size:2rem;");
+
+    }
+
+    //determine workout completed
+    //capture how many cards there are
+    let numCardsDrawn = document.getElementsByClassName('card').length;
+    //capture how many cards are grayed out 
+    let numGreyCards = document.getElementsByClassName('grayOut').length;
+
+    if (numCardsDrawn === numGreyCards) {
+        console.log("all cards grayed");
+        if (!(typeof on_index === "undefined")) {
+            document.querySelector("#workoutComplete").setAttribute("style", "display:block");
+        }
+    }
+    else {
+        if (!(typeof on_index === "undefined")) {
+            document.querySelector("#workoutComplete").setAttribute("style", "display:none");
+        }
+    }
+
+})
+
