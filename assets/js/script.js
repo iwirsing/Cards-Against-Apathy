@@ -341,3 +341,31 @@ $(document).on("click", "#cardImgDrawn", function (event) {
 $(document).on("click",".card__inner",function(){
     this.classList.add('is-flipped');
 })
+
+//FUNCTION to press icon and gets changed when it is the current selection
+var rad = document.querySelectorAll(".radio-button");
+var prev = null;
+for (var i = 0; i < rad.length; i++) {
+    rad[i].addEventListener('change', function() {
+        (prev) ? console.log(prev.value): null;
+        if (this !== prev) {
+            // change prev setting
+            // console.log(this);
+            // console.log(this.nextSibling);
+            if(prev!==null)
+            {
+                prev.nextSibling.querySelector(".suits").setAttribute("style","display:inline");
+                prev.nextSibling.querySelector(".workout").setAttribute("style","display:none;");
+                prev.nextSibling.setAttribute("style"," background-color: black; background-image: url(https://www.pngitem.com/pimgs/m/518-5181524_red-poker-chip-png-transparent-png.png);background-size: cover;background-position: center;background-repeat: no-repeat;");
+            }
+
+            prev = this;
+            
+            prev.nextSibling.querySelector(".suits").setAttribute("style","display:none");
+            prev.nextSibling.querySelector(".workout").setAttribute("style","display:inline;font-size: 24pt;position: relative;top: -25px;");
+            prev.nextSibling.setAttribute("style","background-image: none; background-color: black;color: goldenrod; border: 2pt solid goldenrod;transition: 0.3s;");
+            
+        }
+        // console.log(this);
+    });
+}
