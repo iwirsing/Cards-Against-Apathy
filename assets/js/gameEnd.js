@@ -29,35 +29,43 @@ saveBtn.addEventListener('click', function () {
   if (localStorage.getItem('savedWorkouts')) {
     savedNameArray = localStorage.getItem('savedWorkouts').split(',');
   } else {
-    savedNamesArray = [];
+    savedNameArray = [];
   }
-  savedNames.push(name);
-  localStorage.setItem('savedWorkouts', savedNames);
-
-  //reset modal h2
-  document.querySelector(".noteName").innerHTML = "Pick a name for your workout!";
-
-  // save key/value pair [workout name | array of cards drawn] to storage
-  let numCardsDrawn = document.getElementsByClassName('card').length;
-  let card = document.getElementsByClassName('card');
-  console.log(document.getElementsByClassName('card'));
-  let cardsDrawn = [];
-  for (let i = 0; i < numCardsDrawn; i++) {
-    let cardData = [];
-    //the link to the card picture
-    cardData.push(card[i].children[0].src);
-    console.log(card[i].children[0].src);
-    //title of workout
-    cardData.push(card[i].children[1].innerText);
-    console.log(card[i].children[1].innerText);
-    //instruction of workout
-    cardData.push(card[i].children[2].innerText);
-    console.log(card[i].children[2].innerText);
-
-    cardsDrawn.push(cardData)
+  //if name is not unique
+  if (savedNameArray.includes(name)){
+    document.querySelector(".noteName").innerHTML = "Name taken. Pick another name for your workout.";
   }
-  localStorage.setItem(name, JSON.stringify(cardsDrawn));
-  goToFavorites();
+  else //it's unique store it 
+  {
+    savedNames.push(name);
+    localStorage.setItem('savedWorkouts', savedNames);
+
+    //reset modal h2
+    document.querySelector(".noteName").innerHTML = "Pick a name for your workout!";
+
+    // save key/value pair [workout name | array of cards drawn] to storage
+    let numCardsDrawn = document.getElementsByClassName('card').length;
+    let card = document.getElementsByClassName('card');
+    console.log(document.getElementsByClassName('card'));
+    let cardsDrawn = [];
+    for (let i = 0; i < numCardsDrawn; i++) {
+      let cardData = [];
+      //the link to the card picture
+      cardData.push(card[i].children[0].src);
+      console.log(card[i].children[0].src);
+      //title of workout
+      cardData.push(card[i].children[1].innerText);
+      console.log(card[i].children[1].innerText);
+      //instruction of workout
+      cardData.push(card[i].children[2].innerText);
+      console.log(card[i].children[2].innerText);
+
+      cardsDrawn.push(cardData)
+    }
+    localStorage.setItem(name, JSON.stringify(cardsDrawn));
+    goToFavorites();
+  }
+  
 }
 )
 
