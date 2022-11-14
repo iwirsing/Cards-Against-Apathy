@@ -42,4 +42,4 @@ Mark Calcagno
 
 ## Future Development
 
-We hope to return to this project one day to add community features, allowing users to share completed and favorite workouts with friends for some friendly competition.  Adding icons to the cards to supplement the long texts would also be a nice addition, however, that would mean migrating to a different workout API.
+We hope to return to this project one day to add community features, allowing users to share completed and favorite workouts with friends for some friendly competition.  Providing the option for users to select whether they have weights available and creating a different set of options for suits to choose from would be an appealing additional feature for many who would like to use the app otherwise. Also, adding icons to the cards to supplement the long texts would also be a nice addition, however, that would mean migrating to a different workout API. 
