@@ -112,7 +112,7 @@ h3 {
     background-repeat: no-repeat;
 }
 
-.icon:hover {
+.icon:hover , .iconClick{
     background-image: none;
     background-color: black;
     color: goldenrod;
@@ -120,12 +120,12 @@ h3 {
     transition: 0.3s;
 }
 
-.icon:hover .suits {
-    display: none;
+.icon:hover .suits  {
+    display: none !important;
 }
 
-.icon:hover .workout {
-    display: inline;
+.icon:hover .workout{
+    display: inline !important;
     font-size: 24pt;
     position: relative;
     top: -25px;

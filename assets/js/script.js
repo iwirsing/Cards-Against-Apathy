@@ -341,3 +341,32 @@ $(document).on("click", "#cardImgDrawn", function (event) {
 $(document).on("click",".card__inner",function(){
     this.classList.add('is-flipped');
 })
+
+//FUNCTION to press icon and keep it there
+var rad = document.querySelectorAll(".radio-button");
+var prev = null;
+for (var i = 0; i < rad.length; i++) {
+    rad[i].addEventListener('change', function() {
+        (prev) ? console.log(prev.value): null;
+        if (this !== prev) {
+            //change prev setting
+            console.log(this);
+            console.log(this.nextSibling);
+            if(prev!==null)
+            {
+                prev.nextSibling.querySelector(".suits").setAttribute("style","display:inline");
+                prev.nextSibling.querySelector(".workout").setAttribute("style","display:none;");
+                prev.nextSibling.classList.remove("iconClick");
+               
+            }
+
+            prev = this;
+            
+            prev.nextSibling.querySelector(".suits").setAttribute("style","display:none");
+            prev.nextSibling.querySelector(".workout").setAttribute("style","display:inline;font-size: 24pt;position: relative;top: -25px;");
+            prev.nextSibling.classList.add("iconClick");
+            
+        }
+        console.log(this);
+    });
+}
