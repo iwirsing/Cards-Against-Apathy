@@ -267,9 +267,6 @@ function displayCards(card, exerciseIndex) {
 function submitForm(event) {
     event.preventDefault(event);
 
-    $("#submitBtn").toggle("disabled");
-    setTimeout('$("#submitBtn").toggle("disabled")', 500);
-
     //hide workout complete button
     document.querySelector("#workoutComplete").setAttribute("style", "display:none");
 
