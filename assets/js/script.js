@@ -45,7 +45,7 @@ function drawCardsAPI(cardNum, suit) {
     }
 
     if (suit === "Diamonds") {
-        console.log("Diamonds clicked");
+        // console.log("Diamonds clicked");
         //create partial deck of diamonds
         var diamondsUrl = deckURL + diamondsDeckID + '/draw/?count=' + cardNum;
         //fill clubs deck
@@ -55,10 +55,10 @@ function drawCardsAPI(cardNum, suit) {
                 .then(fetch(diamondsUrl)
                     .then(response => response.json())
                     .then(diamondsHand => {
-                        console.log(diamondsHand);
+                        // console.log(diamondsHand);
                         for (var i = 0; i < diamondsHand.cards.length; i++) {
                             var diamondsCard = diamondsHand.cards[i];
-                            console.log(diamondsCard);
+                            // console.log(diamondsCard);
                             displayCards(diamondsCard, i);
                         }
 
@@ -68,7 +68,7 @@ function drawCardsAPI(cardNum, suit) {
     }
 
     if (suit === "Hearts") {
-        console.log("Hearts clicked");
+        // console.log("Hearts clicked");
         //create partial deck of hearts
         var heartsUrl = deckURL + heartsDeckID + '/draw/?count=' + cardNum;
         //fill clubs deck
@@ -78,10 +78,10 @@ function drawCardsAPI(cardNum, suit) {
                 .then(fetch(heartsUrl)
                     .then(response => response.json())
                     .then(heartsHand => {
-                        console.log(heartsHand);
+                        // console.log(heartsHand);
                         for (var i = 0; i < heartsHand.cards.length; i++) {
                             var heartCard = heartsHand.cards[i];
-                            console.log(heartCard);
+                            // console.log(heartCard);
                             displayCards(heartCard, i);
                         }
 
@@ -91,7 +91,7 @@ function drawCardsAPI(cardNum, suit) {
     }
 
     if (suit === "Spades") {
-        console.log("Spades clicked");
+        // console.log("Spades clicked");
         //create partial deck of spades
         var spadesUrl = deckURL + spadesDeckID + '/draw/?count=' + cardNum;
         //fill clubs deck
@@ -101,10 +101,10 @@ function drawCardsAPI(cardNum, suit) {
                 .then(fetch(spadesUrl)
                     .then(response => response.json())
                     .then(spadesHand => {
-                        console.log(spadesHand);
+                        // console.log(spadesHand);
                         for (var i = 0; i < spadesHand.cards.length; i++) {
                             var spadesCard = spadesHand.cards[i];
-                            console.log(spadesCard);
+                            // console.log(spadesCard);
                             displayCards(spadesCard, i);
                         }
 
@@ -114,7 +114,7 @@ function drawCardsAPI(cardNum, suit) {
     }
 
     if (suit === "Full Workout") {
-        console.log("Full Workout clicked");
+        // console.log("Full Workout clicked");
         //create partial deck of clubs
         var deckAllUrl = deckURL + deckIdAll + '/draw/?count=' + cardNum;
         //fill clubs deck
@@ -124,10 +124,10 @@ function drawCardsAPI(cardNum, suit) {
                 .then(fetch(deckAllUrl)
                     .then(response => response.json())
                     .then(allHand => {
-                        console.log(allHand);
+                        // console.log(allHand);
                         for (var i = 0; i < allHand.cards.length; i++) {
                             var allCard = allHand.cards[i];
-                            console.log(allCard);
+                            // console.log(allCard);
                             displayCards(allCard, i);
                         }
 
@@ -141,7 +141,7 @@ function drawCardsAPI(cardNum, suit) {
 
 //FUNCTION that displays cards
 function displayCards(card, exerciseIndex) {
-    console.log(card);
+    // console.log(card);
 
     //grab important values
     var cardValue = card.value;
@@ -157,7 +157,7 @@ function displayCards(card, exerciseIndex) {
         cardValue = '1';
     }
 
-    console.log(cardValue, cardImg, cardSuit);
+    // console.log(cardValue, cardImg, cardSuit);
 
     // selected suite(s) are matched with specific types of exercises
     if (cardSuit == 'HEARTS') {
@@ -186,7 +186,7 @@ function displayCards(card, exerciseIndex) {
     fetch('https://api.api-ninjas.com/v1/exercises?' + type, requestOptions)
         .then(response => response.json())
         .then(result => {
-            console.log(result);
+            // console.log(result);
 
             // create cardz for flipping
             var cardContainer = document.createElement("div");
@@ -267,18 +267,23 @@ function displayCards(card, exerciseIndex) {
 function submitForm(event) {
     event.preventDefault(event);
 
+    $("#submitBtn").toggle("disabled");
+    setTimeout('$("#submitBtn").toggle("disabled")', 500);
+
     //hide workout complete button
     document.querySelector("#workoutComplete").setAttribute("style", "display:none");
 
     //capture user input # of cards
     var numCards = document.querySelector("#sliderOutput1").value;
-    console.log(numCards);
+    // console.log(numCards);
 
     //capture the card suit
     var selectedSuit = $('input[name="suitBtn"]:checked').val();
-    console.log("suit selected is " + selectedSuit);
+    // console.log("suit selected is " + selectedSuit);
 
     drawCardsAPI(numCards, selectedSuit);
+
+    
 }
 
 $("#submitBtn").on("click", submitForm);
@@ -286,9 +291,9 @@ $("#submitBtn").on("click", submitForm);
 //FUNCTION to show and hide exercise instructions
 $(document).on("click", ".card-divider", function (event) {
     event.preventDefault();
-    console.log(event);
-    console.log(event.currentTarget.innerText);
-    console.log(event.target.parentNode.querySelector("#exerciseTxtDrawn"));
+    // console.log(event);
+    // console.log(event.currentTarget.innerText);
+    // console.log(event.target.parentNode.querySelector("#exerciseTxtDrawn"));
     var display = event.target.parentNode.querySelector("#exerciseTxtDrawn");
     display.style.display = display.style.display == "none" ? "block" : "none";
 })
@@ -297,7 +302,7 @@ $(document).on("click", ".card-divider", function (event) {
 //FUNCTION section to gray out cards when done and determine when all workout completed
 $(document).on("click", "#cardImgDrawn", function (event) {
     event.preventDefault();
-    console.log(this);
+    // console.log(this);
 
     if (this.classList.contains('grayOut')) {
         //change back to color
@@ -318,7 +323,7 @@ $(document).on("click", "#cardImgDrawn", function (event) {
 
     //if all cards are grayed out then workout complete, show workout complete button
     if (numCardsDrawn === numGreyCards) {
-        console.log("all cards grayed");
+        // console.log("all cards grayed");
         if (!(typeof on_index === "undefined")) {
             document.querySelector("#workoutComplete").setAttribute("style", "display:block");
         }
@@ -350,8 +355,8 @@ for (var i = 0; i < rad.length; i++) {
         (prev) ? console.log(prev.value): null;
         if (this !== prev) {
             //change prev setting
-            console.log(this);
-            console.log(this.nextSibling);
+            // console.log(this);
+            // console.log(this.nextSibling);
             if(prev!==null)
             {
                 prev.nextSibling.querySelector(".suits").setAttribute("style","display:inline");
@@ -367,6 +372,6 @@ for (var i = 0; i < rad.length; i++) {
             prev.nextSibling.classList.add("iconClick");
             
         }
-        console.log(this);
+        // console.log(this);
     });
 }
