@@ -28,16 +28,16 @@ When the user opens the website, they will be prompted to select a suit, which c
 ![Screenshot](./assets/images/CardsAgainstApathyScreenshot.png)
 
 ## Links
-Video demo: https://youtu.be/s0dPTozQHYM
-The site: https://the-fighting-mongooses-official.github.io/project-1/
-Github: https://github.com/The-Fighting-Mongooses-Official/project-1   
+* Video demo: https://youtu.be/s0dPTozQHYM
+* The site: https://the-fighting-mongooses-official.github.io/project-1/
+* Github: https://github.com/The-Fighting-Mongooses-Official/project-1   
 
 ## Credits
 
-Ivy Wirsing
-Grace Yao
-Andrew Phinney
-Mark Calcagno
+* Ivy Wirsing - https://github.com/iwirsing
+* Grace Yao - https://github.com/gyao1487
+* Andrew Phinney - https://github.com/aphinney0516
+* Mark Calcagno - https://github.com/mcalcagno47
 
 
 ## Future Development
