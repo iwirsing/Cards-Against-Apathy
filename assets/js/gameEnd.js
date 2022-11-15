@@ -34,6 +34,7 @@ saveBtn.addEventListener('click', function () {
   //if name is not unique
   if (savedNameArray.includes(name)){
     document.querySelector(".noteName").innerHTML = "Name taken. Pick another name for your workout.";
+
   }
   else //it's unique store it 
   {
@@ -46,19 +47,19 @@ saveBtn.addEventListener('click', function () {
     // save key/value pair [workout name | array of cards drawn] to storage
     let numCardsDrawn = document.getElementsByClassName('card').length;
     let card = document.getElementsByClassName('card');
-    console.log(document.getElementsByClassName('card'));
+    // console.log(document.getElementsByClassName('card'));
     let cardsDrawn = [];
     for (let i = 0; i < numCardsDrawn; i++) {
       let cardData = [];
       //the link to the card picture
       cardData.push(card[i].children[0].src);
-      console.log(card[i].children[0].src);
+      // console.log(card[i].children[0].src);
       //title of workout
       cardData.push(card[i].children[1].innerText);
-      console.log(card[i].children[1].innerText);
+      // console.log(card[i].children[1].innerText);
       //instruction of workout
       cardData.push(card[i].children[2].innerText);
-      console.log(card[i].children[2].innerText);
+      // console.log(card[i].children[2].innerText);
 
       cardsDrawn.push(cardData)
     }
@@ -106,14 +107,14 @@ const favoritesStage = document.getElementById('favoritesStage');
 function showFavorites() {
   //Append workout name as a button to UI in favorites.html
   let savedWorkouts = localStorage.getItem('savedWorkouts').split(',');
-  console.log(savedWorkouts);
+  // console.log(savedWorkouts);
   if (savedWorkouts[0] != '') {
     for (var i = 0; i < savedWorkouts.length; i++) {
-      console.log("save " + i)
+      // console.log("save " + i)
       let button = document.createElement('div');
       button.textContent = savedWorkouts[i];
       button.setAttribute('class', 'button savedWorkout');
-      console.log(button);
+      // console.log(button);
       document.querySelector('#favoriteList').append(button);
 
     }
@@ -128,14 +129,14 @@ $(document).on("click", ".savedWorkout", function (event) {
   event.preventDefault();
 
   let keyValue = event.currentTarget.innerText;
-  console.log(keyValue);
+  // console.log(keyValue);
 
   //save keyValue to global variable
   currentKeyValue = keyValue;
 
   //get element
   let cardSaved = JSON.parse(localStorage.getItem(keyValue));
-  console.log(cardSaved);
+  // console.log(cardSaved);
 
   //empty printing area
   $("#favoriteCards").empty();
@@ -143,7 +144,7 @@ $(document).on("click", ".savedWorkout", function (event) {
   if (cardSaved != null) {
     //print card 
     for (var i = 0; i < cardSaved.length; i++) {
-      console.log(cardSaved[i]);
+      // console.log(cardSaved[i]);
       printSaved(cardSaved[i]);
     }
   }
@@ -199,7 +200,7 @@ $(document).on("click", "#delWorkout", function (event) {
   if (currentKeyValue) {
     //remove from localstorage array 
     let localArray = localStorage.getItem('savedWorkouts').split(',');
-    console.log(localArray);
+    // console.log(localArray);
 
     if (localArray.includes(currentKeyValue)) {
 
