@@ -28,18 +28,18 @@ When the user opens the website, they will be prompted to select a suit, which c
 ![Screenshot](./assets/images/CardsAgainstApathyScreenshot.png)
 
 ## Links
-Video demo: https://youtu.be/s0dPTozQHYM
-The site: https://the-fighting-mongooses-official.github.io/project-1/
-Github: https://github.com/The-Fighting-Mongooses-Official/project-1   
+* Video demo: https://youtu.be/s0dPTozQHYM
+* The site: https://the-fighting-mongooses-official.github.io/project-1/
+* Github: https://github.com/The-Fighting-Mongooses-Official/project-1   
 
 ## Credits
 
-Ivy Wirsing
-Grace Yao
-Andrew Phinney
-Mark Calcagno
+* Ivy Wirsing - https://github.com/iwirsing
+* Grace Yao - https://github.com/gyao1487
+* Andrew Phinney - https://github.com/aphinney0516
+* Mark Calcagno - https://github.com/mcalcagno47
 
 
 ## Future Development
 
-We hope to return to this project one day to add community features, allowing users to share completed and favorite workouts with friends for some friendly competition.  Adding icons to the cards to supplement the long texts would also be a nice addition, however, that would mean migrating to a different workout API.
+We hope to return to this project one day to add community features, allowing users to share completed and favorite workouts with friends for some friendly competition.  Providing the option for users to select whether they have weights available and creating a different set of options for suits to choose from would be an appealing additional feature for many who would like to use the app otherwise. Also, adding icons to the cards to supplement the long texts would also be a nice addition, however, that would mean migrating to a different workout API. 

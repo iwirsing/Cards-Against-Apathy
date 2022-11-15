@@ -34,6 +34,7 @@ saveBtn.addEventListener('click', function () {
   //if name is not unique
   if (savedNameArray.includes(name)){
     document.querySelector(".noteName").innerHTML = "Name taken. Pick another name for your workout.";
+
   }
   else //it's unique store it 
   {
