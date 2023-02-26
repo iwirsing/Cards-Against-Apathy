@@ -1,10 +1,10 @@
 //============================== SECTION 1 ==============================
 //universal variables
-var deckIdAll = '8nlbluqizznt';
-var clubsDeckID = '4m4xrszvu5ex';
-var diamondsDeckID = 'w03icwg2n6ga';
-var heartsDeckID = '4admp62snbza';
-var spadesDeckID = 'kjg7a4bfgs5o';
+var deckIdAll = 'ofaittvibg39';
+var clubsDeckID = 'wqck3dcb13lf';
+var diamondsDeckID = 'wthr9qecpt85';
+var heartsDeckID = 'wfglizdru0in';
+var spadesDeckID = '1i8141b79ky0';
 var exerName;
 var exerInstructions;   
 var deckURL = 'https://www.deckofcardsapi.com/api/deck/'
