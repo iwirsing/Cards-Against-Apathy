@@ -27,7 +27,7 @@ function drawCardsAPI(cardNum, suit, newD) {
             .then(fetch('https://www.deckofcardsapi.com/api/deck/' + newD + '/shuffle/?cards=AC,2C,3C,4C,5C,6C,7C,8C,9C,0C,JC,QC,KC')
                 .then(data => data.json())
                 .then(partialD => {
-                
+                    console.log(partialD);
                     //create partial deck of clubs
                     var clubsUrl = deckURL + partialD.deck_id + '/draw/?count=' + cardNum;
                     fetch(clubsUrl)
