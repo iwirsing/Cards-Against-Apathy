@@ -1,139 +1,151 @@
 //============================== SECTION 1 ==============================
 //universal variables
-var deckIdAll = 'ofaittvibg39';
-var clubsDeckID = 'wqck3dcb13lf';
-var diamondsDeckID = 'wthr9qecpt85';
-var heartsDeckID = 'wfglizdru0in';
-var spadesDeckID = '1i8141b79ky0';
 var exerName;
-var exerInstructions;   
+var exerInstructions;
 var deckURL = 'https://www.deckofcardsapi.com/api/deck/'
 
 //FUNCTION that draws cards
-function drawCardsAPI(cardNum, suit) {
+function drawCardsAPI(cardNum, suit, newD) {
 
     //clear display and reset 
     $("#rowCards").empty();
     //remove confetti if any   
     for (var i = 0; i < 100; i++) {
-    if ($(".confetti-"+i)){
-    $(".confetti-"+i).remove();  }
+        if ($(".confetti-" + i)) {
+            $(".confetti-" + i).remove();
+        }
     }
     //reset modal h2
-    document.querySelector(".noteName").innerHTML="Pick a name for your workout!";
+    document.querySelector(".noteName").innerHTML = "Pick a name for your workout!";
 
     //check suit type
     if (suit === "Clubs") {
-        //create partial deck of clubs
-        var clubsUrl = deckURL + clubsDeckID + '/draw/?count=' + cardNum;
+
         //fill clubs deck
-        fetch('https://www.deckofcardsapi.com/api/deck/4m4xrszvu5ex/return/')
+        fetch('https://www.deckofcardsapi.com/api/deck/' + newD + '/return/')
             //shuffle clubs cards
-            .then(fetch('https://www.deckofcardsapi.com/api/deck/4m4xrszvu5ex/shuffle/?cards=AC,2C,3C,4C,5C,6C,7C,8C,9C,0C,JC,QC,KC')
-                .then(fetch(clubsUrl)
-                    .then(response => response.json())
-                    .then(clubsHand => {
+            .then(fetch('https://www.deckofcardsapi.com/api/deck/' + newD + '/shuffle/?cards=AC,2C,3C,4C,5C,6C,7C,8C,9C,0C,JC,QC,KC')
+                .then(data => data.json())
+                .then(partialD => {
+                
+                    //create partial deck of clubs
+                    var clubsUrl = deckURL + partialD.deck_id + '/draw/?count=' + cardNum;
+                    fetch(clubsUrl)
+                        .then(response => response.json())
+                        .then(clubsHand => {
 
-                        for (var i = 0; i < clubsHand.cards.length; i++) {
-                            var clubCard = clubsHand.cards[i];
-                            displayCards(clubCard, i);
-                        }
+                            for (var i = 0; i < clubsHand.cards.length; i++) {
+                                var clubCard = clubsHand.cards[i];
+                                displayCards(clubCard, i);
+                            }
 
-                    })
-                    .catch(error => console.log('error', error))
-                ));
+                        })
+                        .catch(error => console.log('error', error))
+                }))
+            .catch(error => console.log('error', error));
     }
 
     if (suit === "Diamonds") {
-        // console.log("Diamonds clicked");
-        //create partial deck of diamonds
-        var diamondsUrl = deckURL + diamondsDeckID + '/draw/?count=' + cardNum;
-        //fill clubs deck
-        fetch('https://www.deckofcardsapi.com/api/deck/' + diamondsDeckID + '/return/')
-            //shuffle clubs cards
-            .then(fetch('https://www.deckofcardsapi.com/api/deck/' + diamondsDeckID + '/shuffle/?cards=AD,2D,3D,4D,5D,6D,7D,8D,9D,0D,JD,QD,KD')
-                .then(fetch(diamondsUrl)
-                    .then(response => response.json())
-                    .then(diamondsHand => {
-                        // console.log(diamondsHand);
-                        for (var i = 0; i < diamondsHand.cards.length; i++) {
-                            var diamondsCard = diamondsHand.cards[i];
-                            // console.log(diamondsCard);
-                            displayCards(diamondsCard, i);
-                        }
 
-                    })
-                    .catch(error => console.log('error', error))
-                ));
+        //fill deck
+        fetch('https://www.deckofcardsapi.com/api/deck/' + newD + '/return/')
+            //shuffle clubs cards
+            .then(fetch('https://www.deckofcardsapi.com/api/deck/' + newD + '/shuffle/?cards=AD,2D,3D,4D,5D,6D,7D,8D,9D,0D,JD,QD,KD')
+                .then(data => data.json())
+                .then(partialD => {
+                    //create partial deck of diamonds
+                    var diamondsUrl = deckURL + partialD.deck_id + '/draw/?count=' + cardNum;
+                    fetch(diamondsUrl)
+                        .then(response => response.json())
+                        .then(diamondsHand => {
+                            
+                            for (var i = 0; i < diamondsHand.cards.length; i++) {
+                                var diamondsCard = diamondsHand.cards[i];
+                               
+                                displayCards(diamondsCard, i);
+                            }
+
+                        })
+
+
+                        .catch(error => console.log('error', error))
+                }))
+            .catch(error => console.log('error', error));
     }
 
     if (suit === "Hearts") {
-        // console.log("Hearts clicked");
-        //create partial deck of hearts
-        var heartsUrl = deckURL + heartsDeckID + '/draw/?count=' + cardNum;
-        //fill clubs deck
-        fetch('https://www.deckofcardsapi.com/api/deck/' + heartsDeckID + '/return/')
-            //shuffle clubs cards
-            .then(fetch('https://www.deckofcardsapi.com/api/deck/' + heartsDeckID + '/shuffle/?cards=AH,2H,3H,4H,5H,6H,7H,8H,9H,0H,JH,QH,KH')
-                .then(fetch(heartsUrl)
-                    .then(response => response.json())
-                    .then(heartsHand => {
-                        // console.log(heartsHand);
-                        for (var i = 0; i < heartsHand.cards.length; i++) {
-                            var heartCard = heartsHand.cards[i];
-                            // console.log(heartCard);
-                            displayCards(heartCard, i);
-                        }
 
-                    })
-                    .catch(error => console.log('error', error))
-                ));
+        //fill clubs deck
+        fetch('https://www.deckofcardsapi.com/api/deck/' + newD + '/return/')
+            //shuffle clubs cards
+            .then(fetch('https://www.deckofcardsapi.com/api/deck/' + newD + '/shuffle/?cards=AH,2H,3H,4H,5H,6H,7H,8H,9H,0H,JH,QH,KH')
+                .then(data => data.json())
+                .then(partialD => {
+                    var heartsUrl = deckURL + partialD.deck_id + '/draw/?count=' + cardNum;
+                    fetch(heartsUrl)
+                        .then(response => response.json())
+                        .then(heartsHand => {
+                            
+                            for (var i = 0; i < heartsHand.cards.length; i++) {
+                                var heartCard = heartsHand.cards[i];
+                             
+                                displayCards(heartCard, i);
+                            }
+
+                        })
+                        .catch(error => console.log('error', error))
+                })
+
+                .catch(error => console.log('error', error))
+            );
     }
 
     if (suit === "Spades") {
-        // console.log("Spades clicked");
-        //create partial deck of spades
-        var spadesUrl = deckURL + spadesDeckID + '/draw/?count=' + cardNum;
-        //fill clubs deck
-        fetch('https://www.deckofcardsapi.com/api/deck/' + spadesDeckID + '/return/')
-            //shuffle clubs cards
-            .then(fetch('https://www.deckofcardsapi.com/api/deck/' + spadesDeckID + '/shuffle/?cards=AS,2S,3S,4S,5S,6S,7S,8S,9S,0S,JS,QS,KS')
-                .then(fetch(spadesUrl)
-                    .then(response => response.json())
-                    .then(spadesHand => {
-                        // console.log(spadesHand);
-                        for (var i = 0; i < spadesHand.cards.length; i++) {
-                            var spadesCard = spadesHand.cards[i];
-                            // console.log(spadesCard);
-                            displayCards(spadesCard, i);
-                        }
 
-                    })
-                    .catch(error => console.log('error', error))
-                ));
+        //fill  deck
+        fetch('https://www.deckofcardsapi.com/api/deck/' + newD + '/return/')
+            //shuffle cards
+            .then(fetch('https://www.deckofcardsapi.com/api/deck/' + newD + '/shuffle/?cards=AS,2S,3S,4S,5S,6S,7S,8S,9S,0S,JS,QS,KS')
+                .then(data => data.json())
+                .then(partialD => {
+                    spadesUrl = deckURL + partialD.deck_id + '/draw/?count=' + cardNum;
+                    fetch(spadesUrl)
+                        .then(response => response.json())
+                        .then(spadesHand => {
+
+                            for (var i = 0; i < spadesHand.cards.length; i++) {
+                                var spadesCard = spadesHand.cards[i];
+                                displayCards(spadesCard, i);
+                            }
+
+                        })
+                        .catch(error => console.log('error', error))
+                }))
+            .catch(error => console.log('error', error));
     }
 
     if (suit === "Full Workout") {
-        // console.log("Full Workout clicked");
-        //create partial deck of clubs
-        var deckAllUrl = deckURL + deckIdAll + '/draw/?count=' + cardNum;
-        //fill clubs deck
-        fetch('https://www.deckofcardsapi.com/api/deck/' + deckIdAll + '/return/')
-            //shuffle clubs cards
-            .then(fetch('https://www.deckofcardsapi.com/api/deck/' + deckIdAll + '/shuffle/?remaining=false')
-                .then(fetch(deckAllUrl)
-                    .then(response => response.json())
-                    .then(allHand => {
-                        // console.log(allHand);
-                        for (var i = 0; i < allHand.cards.length; i++) {
-                            var allCard = allHand.cards[i];
-                            // console.log(allCard);
-                            displayCards(allCard, i);
-                        }
 
-                    })
-                    .catch(error => console.log('error', error))
-                ));
+        //fill deck
+        fetch('https://www.deckofcardsapi.com/api/deck/' + newD + '/return/')
+            //shuffle cards
+            .then(fetch('https://www.deckofcardsapi.com/api/deck/' + newD + '/shuffle/?remaining=false')
+                .then(() => {
+                    var deckAllUrl = deckURL + newD+ '/draw/?count=' + cardNum;
+                    fetch(deckAllUrl)
+                        .then(response => response.json())
+                        .then(allHand => {
+                            for (var i = 0; i < allHand.cards.length; i++) {
+                                var allCard = allHand.cards[i];
+                                displayCards(allCard, i);
+                            }
+
+                        })
+                        .catch(error => console.log('error', error))
+                }
+
+                ))
+            .catch(error => console.log('error', error));
     }
 
 }
@@ -141,7 +153,6 @@ function drawCardsAPI(cardNum, suit) {
 
 //FUNCTION that displays cards
 function displayCards(card, exerciseIndex) {
-    // console.log(card);
 
     //grab important values
     var cardValue = card.value;
@@ -157,8 +168,6 @@ function displayCards(card, exerciseIndex) {
         cardValue = '1';
     }
 
-    // console.log(cardValue, cardImg, cardSuit);
-
     // selected suite(s) are matched with specific types of exercises
     if (cardSuit == 'HEARTS') {
         type = 'type=cardio';
@@ -171,7 +180,7 @@ function displayCards(card, exerciseIndex) {
     }
     if (cardSuit == 'CLUBS') {
         type = 'type=plyometrics';
-        // type = 'type=stretching';
+
     }
 
     var myHeaders = new Headers();
@@ -186,7 +195,7 @@ function displayCards(card, exerciseIndex) {
     fetch('https://api.api-ninjas.com/v1/exercises?' + type, requestOptions)
         .then(response => response.json())
         .then(result => {
-            // console.log(result);
+ 
 
             // create cardz for flipping
             var cardContainer = document.createElement("div");
@@ -201,14 +210,14 @@ function displayCards(card, exerciseIndex) {
             cardFront.setAttribute("class", "card__face card__face--front")
 
             //create img
-            var backCard=document.createElement("img");
-            backCard.setAttribute("src","./assets/images/cardBack.png");
-            backCard.setAttribute("style","width:250px; height:400px;");
+            var backCard = document.createElement("img");
+            backCard.setAttribute("src", "./assets/images/cardBack.png");
+            backCard.setAttribute("style", "width:250px; height:400px;");
 
             //append
             cardFront.appendChild(backCard);
             cardInner.appendChild(cardFront);
-            
+
             //create column div 
             var colDiv = document.createElement("div");
             colDiv.setAttribute("class", "column card__face card__face--back")
@@ -230,7 +239,7 @@ function displayCards(card, exerciseIndex) {
             var doneDiv = document.createElement("div");
             doneDiv.setAttribute("class", "text-block");
             doneDiv.setAttribute("style", "position:absolute;top:150px;left:30%; z-index:7;font-size:2rem;display:none");
-            doneDiv.textContent='D O N E';
+            doneDiv.textContent = 'D O N E';
 
             if (cardSuit == 'HEARTS') {
                 cardDivider.setAttribute("style", "justify-content:center")
@@ -272,15 +281,24 @@ function submitForm(event) {
 
     //capture user input # of cards
     var numCards = document.querySelector("#sliderOutput1").value;
-    // console.log(numCards);
+
 
     //capture the card suit
     var selectedSuit = $('input[name="suitBtn"]:checked').val();
-    // console.log("suit selected is " + selectedSuit);
 
-    drawCardsAPI(numCards, selectedSuit);
+    //fetch new deck
+    fetch('https://www.deckofcardsapi.com/api/deck/new/')
+        .then(response => response.json())
+        .then(newDeck => {
 
-    
+            drawCardsAPI(numCards, selectedSuit, newDeck.deck_id);
+
+
+        })
+        .catch(error => console.log('error', error))
+
+
+
 }
 
 $("#submitBtn").on("click", submitForm);
@@ -288,9 +306,7 @@ $("#submitBtn").on("click", submitForm);
 //FUNCTION to show and hide exercise instructions
 $(document).on("click", ".card-divider", function (event) {
     event.preventDefault();
-    // console.log(event);
-    // console.log(event.currentTarget.innerText);
-    // console.log(event.target.parentNode.querySelector("#exerciseTxtDrawn"));
+
     var display = event.target.parentNode.querySelector("#exerciseTxtDrawn");
     display.style.display = display.style.display == "none" ? "block" : "none";
 })
@@ -299,7 +315,7 @@ $(document).on("click", ".card-divider", function (event) {
 //FUNCTION section to gray out cards when done and determine when all workout completed
 $(document).on("click", "#cardImgDrawn", function (event) {
     event.preventDefault();
-    // console.log(this);
+
 
     if (this.classList.contains('grayOut')) {
         //change back to color
@@ -320,7 +336,7 @@ $(document).on("click", "#cardImgDrawn", function (event) {
 
     //if all cards are grayed out then workout complete, show workout complete button
     if (numCardsDrawn === numGreyCards) {
-        // console.log("all cards grayed");
+
         if (!(typeof on_index === "undefined")) {
             document.querySelector("#workoutComplete").setAttribute("style", "display:block");
         }
@@ -330,17 +346,18 @@ $(document).on("click", "#cardImgDrawn", function (event) {
             document.querySelector("#workoutComplete").setAttribute("style", "display:none");
 
             //remove confetti if any
-             for (var i = 0; i < 100; i++) {
-                if ($(".confetti-"+i)){
-                $(".confetti-"+i).remove();  }
+            for (var i = 0; i < 100; i++) {
+                if ($(".confetti-" + i)) {
+                    $(".confetti-" + i).remove();
                 }
+            }
         }
     }
 
 })
 
 //FUNCTION to flip open drawn cards once
-$(document).on("click",".card__inner",function(){
+$(document).on("click", ".card__inner", function () {
     this.classList.add('is-flipped');
 })
 
@@ -348,27 +365,24 @@ $(document).on("click",".card__inner",function(){
 var rad = document.querySelectorAll(".radio-button");
 var prev = null;
 for (var i = 0; i < rad.length; i++) {
-    rad[i].addEventListener('change', function() {
-        (prev) ? console.log(prev.value): null;
+    rad[i].addEventListener('change', function () {
+        (prev) ? console.log(prev.value) : null;
         if (this !== prev) {
-            //change prev setting
-            // console.log(this);
-            // console.log(this.nextSibling);
-            if(prev!==null)
-            {
-                prev.nextSibling.querySelector(".suits").setAttribute("style","display:inline");
-                prev.nextSibling.querySelector(".workout").setAttribute("style","display:none;");
+
+            if (prev !== null) {
+                prev.nextSibling.querySelector(".suits").setAttribute("style", "display:inline");
+                prev.nextSibling.querySelector(".workout").setAttribute("style", "display:none;");
                 prev.nextSibling.classList.remove("iconClick");
-               
+
             }
 
             prev = this;
-            
-            prev.nextSibling.querySelector(".suits").setAttribute("style","display:none");
-            prev.nextSibling.querySelector(".workout").setAttribute("style","display:inline;font-size: 24pt;position: relative;top: -25px;");
+
+            prev.nextSibling.querySelector(".suits").setAttribute("style", "display:none");
+            prev.nextSibling.querySelector(".workout").setAttribute("style", "display:inline;font-size: 24pt;position: relative;top: -25px;");
             prev.nextSibling.classList.add("iconClick");
-            
+
         }
-        // console.log(this);
+
     });
 }
